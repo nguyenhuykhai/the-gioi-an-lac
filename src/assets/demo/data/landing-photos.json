@@ -1,0 +1,42 @@
+{
+    "data":[
+        {
+            "itemImageSrc": "assets/demo/images/landing/rau-khi-huu-1.jpg",
+            "thumbnailImageSrc": "assets/demo/images/landing/rau-khi-huu-1.jpg",
+            "alt": "banner-1",
+            "title": "Rau khí hưu hình 1"
+        },
+        {
+            "itemImageSrc": "assets/demo/images/landing/rau-khi-huu-2.jpg",
+            "thumbnailImageSrc": "assets/demo/images/landing/rau-khi-huu-2.jpg",
+            "alt": "banner-2",
+            "title": "Rau khí hưu hình 2"
+        },
+        {
+            "itemImageSrc": "assets/demo/images/landing/rau-khi-huu-3.jpg",
+            "thumbnailImageSrc": "assets/demo/images/landing/rau-khi-huu-3.jpg",
+            "alt": "banner-3",
+            "title": "Rau khí hưu hình 3"
+        }
+    ],
+    "data2": [
+        {
+            "itemImageSrc": "assets/demo/images/landing/tru-rau-khi-canh-1.jpg",
+            "thumbnailImageSrc": "assets/demo/images/landing/tru-rau-khi-canh-1.jpg",
+            "alt": "tru-rau-khi-canh-1",
+            "title": "Trụ rau khí canh hình 1"
+        },
+        {
+            "itemImageSrc": "assets/demo/images/landing/tru-rau-khi-canh-2.jpg",
+            "thumbnailImageSrc": "assets/demo/images/landing/tru-rau-khi-canh-2.jpg",
+            "alt": "tru-rau-khi-canh-2",
+            "title": "Trụ rau khí canh hình 2"
+        },
+        {
+            "itemImageSrc": "assets/demo/images/landing/tru-rau-khi-canh-3.jpg",
+            "thumbnailImageSrc": "assets/demo/images/landing/tru-rau-khi-canh-3.jpg",
+            "alt": "tru-rau-khi-canh-3",
+            "title": "Trụ rau khí canh hình 3"
+        }
+    ]
+}

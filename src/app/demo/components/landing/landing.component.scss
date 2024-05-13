@@ -1,0 +1,35 @@
+.group-logo {
+    width: 20rem;
+}
+
+.banner {
+    text-align: -webkit-center;
+}
+
+@media screen and (min-width: 1960px) {
+    .embed-video {
+        width: 100%;
+        height: 100%;
+        .video {
+            width: 735px;
+            height: 400px;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .embed-video {
+        width: 100%;
+        height: 100%;
+        .video {
+            width: 560px;
+            height: 315px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .embed-video {
+        display: none;
+    }
+}
