@@ -1,0 +1,25 @@
+:host ::ng-deep {
+    .p-menuitem-link {
+      color: #111827;
+    }
+  }
+
+.group-logo {
+    width: 20rem;
+}
+
+.banner {
+    text-align: -webkit-center;
+}
+
+.header-navbar {
+    display: flex;
+    flex-direction: column;
+    .contact-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2rem;
+    }
+}
