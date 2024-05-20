@@ -1,4 +1,4 @@
-<div class="surface-0 flex justify-content-center">
+<div class="bg-[#f9fafb] flex justify-content-center">
     <div id="home" class="landing-wrapper overflow-hidden">
         <div id="about" class="py-4 px-4 lg:px-8 mt-5 mx-0 lg:mx-8">
             <div class="flex flex-col md:flex-row">
@@ -7,17 +7,17 @@
                     <h1
                         class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                         Công Ty Cổ Phần Thế Giới An Lạc</h1>
-                    <p class="mb-3 text-2xl leading-relaxed text-gray-500 dark:text-gray-400 text-justify">Với mong muốn
+                    <p class="mb-3 text-2xl leading-relaxed text-gray-800 dark:text-gray-400 text-justify">Với mong muốn
                         đem đến cho thị trường những sản phẩm – dịch vụ công nghệ cao, hiện đại nhưng vẫn mang đậm nét
                         đặc trưng dân dã của người dân Việt Nam. Chúng tôi thấu hiểu khách hàng luôn tìm kiếm những giải
                         pháp vừa đáp ứng sản phẩm sạch mà còn đáp ứng được giá trị tinh thần.</p>
-                    <p class="mb-3 text-2xl leading-relaxed text-gray-500 dark:text-gray-400 text-justify">Dựa trên sự
+                    <p class="mb-3 text-2xl leading-relaxed text-gray-800 dark:text-gray-400 text-justify">Dựa trên sự
                         quan sát học tập và lắng nghe khách hàng Công ty Cổ Phần Thế Giới An Lạc được sáng lập nhằm phục
                         vụ và đáp ứng nhu cầu thị trường hiện nay là sống xanh sống khỏe, An Lạc mỗi ngày.</p>
-                    <p class="mb-3 text-2xl leading-relaxed text-gray-500 dark:text-gray-400 text-justify">Với Thế Giới
+                    <p class="mb-3 text-2xl leading-relaxed text-gray-800 dark:text-gray-400 text-justify">Với Thế Giới
                         An Lạc mỗi bước tiến đều hướng đến mục tiêu phát triển bền vững, bảo vệ môi trường và sức khoẻ
                         con người đáp ứng đa dạng nhu cầu của Người tiêu dùng</p>
-                    <p class="mb-3 text-2xl leading-relaxed text-gray-500 dark:text-gray-400 text-justify">Đến với Thế
+                    <p class="mb-3 text-2xl leading-relaxed text-gray-800 dark:text-gray-400 text-justify">Đến với Thế
                         Giới An Lạc mọi người được tận hưởng những trãi nghiệm mới, một phong cách hoàn toàn mới.</p>
                 </div>
 
@@ -28,51 +28,73 @@
                 </div>
             </div>
         </div>
+
+        <!-- THÔNG TIN NỔI BẬT -->
+        <div class="px-4 lg:px-8 mx-0 lg:mx-8">
+            <h2 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                Tin tức nổi bật
+            </h2>
+			<p-dataView #dv [value]="blogs" filterBy="title" [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+				<ng-template let-blogs pTemplate="listItem">
+					<div class="col-12" *ngFor="let blog of blogs">
+						<div class="flex flex-column md:flex-row align-items-center p-3 w-full">
+							<img [src]="'assets/demo/images/highlight/' + blog.itemImageSrc" [alt]="blog.title" class="my-4 md:my-0 w-9 md:w-10rem shadow-2 mr-5"/>
+							<div class="flex-1 flex flex-column align-items-center text-center md:text-left">
+                                <p class="text-lg font-bold text-justify text-gray-900 dark:text-white">{{blog.title}}</p>
+								<div class="mb-2">{{blog.description}}</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+
+				<ng-template let-blogs pTemplate="gridItem">
+					<div class="grid grid-nogutter bg-[#f9fafb]">
+					<div class="col-12 md:col-4" *ngFor="let blog of blogs">
+						<div class="card m-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="min-height: 28rem;">
+							<div class="flex flex-column align-items-center text-center mb-3">
+								<img [src]="'assets/demo/images/highlight/' + blog.itemImageSrc" [alt]="blog.title" class="cursor-pointer w-9 h-52 object-cover shadow-2 my-3  mx-0 transition-all duration-300 filter brightness-100 hover:brightness-110 "/>
+                                <p class="cursor-pointer text-lg font-bold text-justify text-gray-900 dark:text-white">{{blog.title}}</p>
+								<div class="mb-3 truncate-three-lines">{{blog.description}}</div>
+							</div>
+						</div>
+					</div>
+					</div>
+				</ng-template>
+			</p-dataView>
+		</div>
+
         <!-- FOOTER  -->
 
-        <div class="py-4 px-4 mx-0 mt-8 lg:mx-8">
+        <div class="bg-white border-t-2 w-full py-4 px-4">
             <div class="grid justify-content-between">
-                <div class="col-12 md:col-2" style="margin-top:-1.5rem;">
-                    <a (click)="router.navigate(['/pages/landing'], {fragment: 'home'})"
+                <div class="col-12 md:col-2">
+                    <a (click)="router.navigate(['/'], {fragment: 'home'})"
                         class="flex flex-wrap align-items-center justify-content-center md:justify-content-start md:mb-0 mb-3 cursor-pointer">
-                        <img src="assets/layout/images/{{layoutService.config().colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg"
-                            alt="footer sections" width="50" height="50" class="mr-2">
-                        <h4 class="font-medium text-3xl text-900">SAKAI</h4>
+                        <h4 class="font-medium text-3xl text-900">Thế giới An Lạc</h4>
                     </a>
                 </div>
 
-                <div class="col-12 md:col-10 lg:col-7">
+                <div class="col-12 md:col-5 lg:col-5">
                     <div class="grid text-center md:text-left">
-                        <div class="col-12 md:col-3">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Company</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">About Us</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">News</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Investor Relations</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Careers</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Media Kit</a>
+                        <div class="col-12 md:col-4">
+                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Giới thiệu</h4>
+                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chúng tôi</a>
+                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Tin tức</a>
                         </div>
 
-                        <div class="col-12 md:col-3 mt-4 md:mt-0">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Resources</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Get Started</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Learn</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Case Studies</a>
-                        </div>
-
-                        <div class="col-12 md:col-3 mt-4 md:mt-0">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Community</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Discord</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Events<img
-                                    src="assets/demo/images/landing/new-badge.svg" class="ml-2" /></a>
+                        <div class="col-12 md:col-4 mt-4 md:mt-0">
+                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Cộng đồng</h4>
+                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Facebook</a>
+                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Zalo</a>
                             <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">FAQ</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Blog</a>
+                            <a class="line-height-3 text-xl block cursor-pointer text-700">Bài viết</a>
                         </div>
 
-                        <div class="col-12 md:col-3 mt-4 md:mt-0">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Legal</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Brand Policy</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Privacy Policy</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Terms of Service</a>
+                        <div class="col-12 md:col-4 mt-4 md:mt-0">
+                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Chính sách</h4>
+                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách thương hiệu</a>
+                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách bảo mật</a>
+                            <a class="line-height-3 text-xl block cursor-pointer text-700">Điều khoản dịch vụ</a>
                         </div>
                     </div>
                 </div>

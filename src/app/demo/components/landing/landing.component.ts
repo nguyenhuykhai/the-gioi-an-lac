@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
-import { PhotoService } from '../../service/photo.service';
+import { PhotoService, ShareService } from '../../service';
 import { MenuItem } from 'primeng/api';
+
+// IMPORT FAKE DATA
+import { SelectItem } from 'primeng/api';
+import { DataView } from 'primeng/dataview';
+import { Product } from 'src/app/demo/api/product';
+import { ProductService } from 'src/app/demo/service/product.service';
+
+// IMPORT INTERFACE
+import { Blog } from 'src/app/demo/api/global';
 
 @Component({
     selector: 'app-landing',
@@ -17,10 +26,33 @@ export class LandingComponent {
     images: any[] | undefined;
 
     images2: any[] | undefined;
-    
+
+    blogs: Blog[] | undefined;
+
     responsiveOptions: any[] | undefined;
-    
-    constructor(public layoutService: LayoutService, public router: Router, private photoService: PhotoService) { }
+
+
+    // -------------------------------
+    products: Product[] = [];
+
+    sortOptions: SelectItem[] = [];
+
+    sortOrder: number = 0;
+
+    sortField: string = '';
+
+    sourceCities: any[] = [];
+
+    targetCities: any[] = [];
+
+    orderCities: any[] = [];
+
+    constructor(
+        public layoutService: LayoutService,
+        public router: Router,
+        private photoService: PhotoService,
+        private shareService: ShareService
+    ) { }
 
 
     ngOnInit() {
@@ -202,6 +234,13 @@ export class LandingComponent {
                 route: '/landing'
             },
         ];
+        this.initHighLighBlog();
     }
-    
+
+    initHighLighBlog() {
+        this.shareService.getHighLighBlog().then((blogs) => {
+            this.blogs = blogs;
+            console.log("BLOG: ", this.blogs);
+        });
+    }
 }

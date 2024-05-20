@@ -1,3 +1,14 @@
+.truncate-three-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+    line-height: 1.5rem;
+    text-align: justify;
+  }
+
 @media screen and (min-width: 1960px) {
     .embed-video {
         width: 100%;

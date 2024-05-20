@@ -53,19 +53,19 @@ export class HeaderComponent {
         items: [
           {
             label: 'Trụ',
-            route: '/default'
+            route: '/default/services'
           },
           {
             label: 'Dinh Dưỡng Hữu Cơ',
-            route: '/default'
+            route: '/default/services'
           },
           {
             label: 'Rau khí canh',
-            route: '/default'
+            route: '/default/services'
           },
           {
             label: 'Du phà',
-            route: '/default'
+            route: '/default/services'
           }
         ]
       },

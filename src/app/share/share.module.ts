@@ -11,6 +11,13 @@ import { ImageModule } from 'primeng/image';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { MenubarModule } from 'primeng/menubar';
+import { FormsModule } from '@angular/forms';
+import { DataViewModule } from 'primeng/dataview';
+import { PickListModule } from 'primeng/picklist';
+import { OrderListModule } from 'primeng/orderlist';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { RatingModule } from 'primeng/rating';
 
 
 @NgModule({
@@ -27,7 +34,14 @@ import { MenubarModule } from 'primeng/menubar';
     ImageModule,
     TagModule,
     CardModule,
-    MenubarModule
+    MenubarModule,
+    FormsModule,
+    DataViewModule,
+    PickListModule,
+    OrderListModule,
+    InputTextModule,
+    DropdownModule,
+    RatingModule,
   ],
   exports: [
     DividerModule,
@@ -40,7 +54,14 @@ import { MenubarModule } from 'primeng/menubar';
     ImageModule,
     TagModule,
     CardModule,
-    MenubarModule
+    MenubarModule,
+    FormsModule,
+    DataViewModule,
+    PickListModule,
+    OrderListModule,
+    InputTextModule,
+    DropdownModule,
+    RatingModule
   ]
 })
 export class ShareModule { }

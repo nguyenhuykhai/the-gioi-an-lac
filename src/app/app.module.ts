@@ -11,6 +11,7 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
+import { ShareService } from './demo/service';
 import { DefaultLayoutModule } from './share/layout/default-layout/default-layout.module';
 
 @NgModule({
@@ -19,7 +20,7 @@ import { DefaultLayoutModule } from './share/layout/default-layout/default-layou
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService
+        PhotoService, ProductService, ShareService
     ],
     bootstrap: [AppComponent],
 })

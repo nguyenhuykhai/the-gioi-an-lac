@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "itemImageSrc": "blog-1.jpg",
+            "thumbnailImageSrc": "blog-1.jpg",
+            "alt": "Thế nào là rau sạch?",
+            "title": "Thế nào là rau sạch?",
+            "description": "Rau sạch hay còn gọi là rau an toàn là loại rau được sản xuất theo quy trình kỹ thuật bảo đảm được tiêu chuẩn sau: Hạn chế đến mức thấp nhất việc sử dụng phân hóa học, thuốc trừ sâu, thuốc kích thích... nhằm giảm tối đa lượng độc tố tồn đọng trong rau như nitrat, thuốc trừ sâu, kim loại nặng và vi sinh vật gây bệnh."
+        },
+        {
+            "id": "2",
+            "itemImageSrc": "blog-2.jpg",
+            "thumbnailImageSrc": "blog-2.jpg",
+            "alt": "Thực phẩm hữu cơ là gì và có tốt hơn các loại thực phẩm khác không?",
+            "title": "Thực phẩm hữu cơ là gì và có tốt hơn các loại thực phẩm khác không?",
+            "description": "Bạn đã bao giờ tự hỏi tại sao một số loại thực phẩm được phân loại là 'hữu cơ'? Thực phẩm hữu cơ là gì và nó có tốt hơn các loại thực phẩm khác không? Hãy đọc bài viết dưới đây để hiểu rõ hơn về thực phẩm hữu cơ, hay còn gọi là thực phẩm organic hoặc thực phẩm sạch."
+        },
+        {
+            "id": "3",
+            "itemImageSrc": "blog-3.jpg",
+            "thumbnailImageSrc": "blog-3.jpg",
+            "alt": "Lượng nitrat tồn dư cao: Nguy hiểm cho sức khỏe",
+            "title": "Lượng nitrat tồn dư cao: Nguy hiểm cho sức khỏe",
+            "description": "Nitrat (NO-3) là dạng chất đạm hiện diện trong cây rau, củ, quả. Nếu chúng ta biết cách sử dụng lượng nitrat hợp lý (ít hoặc vừa đủ), nó sẽ giúp cho cây rau có màu xanh; củ, quả đẹp mắt đồng thời không gây hại cho sức khỏe con người."
+        }
+    ]
+}

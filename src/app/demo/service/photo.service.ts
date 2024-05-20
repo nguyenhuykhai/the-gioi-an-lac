@@ -21,6 +21,13 @@ export class PhotoService {
             .then(data => data);
     }
 
+    getHighLighBlog() {
+        return this.http.get<any>('assets/demo/data/landing-photos.json')
+            .toPromise()
+                .then(res => res.data as any)
+                .then(data => data);
+    }
+
     getImages2() {
         return this.http.get<any>('assets/demo/data/photos2.json')
             .toPromise()
