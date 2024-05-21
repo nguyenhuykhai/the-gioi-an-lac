@@ -18,8 +18,6 @@ import { OrderListModule } from 'primeng/orderlist';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { RatingModule } from 'primeng/rating';
-import { FooterComponent } from './components/footer/footer.component';
-import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -63,7 +61,7 @@ import { ContactComponent } from './components/contact/contact.component';
     OrderListModule,
     InputTextModule,
     DropdownModule,
-    RatingModule
+    RatingModule,
   ]
 })
 export class ShareModule { }

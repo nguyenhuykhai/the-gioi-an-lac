@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { PhotoService } from '../../service/photo.service';
 import { MenuItem } from 'primeng/api';
+import { Image } from '../../api/image';
 
 @Component({
   selector: 'app-services-page',
@@ -12,11 +13,9 @@ import { MenuItem } from 'primeng/api';
 export class ServicesPageComponent {
   items: MenuItem[] | undefined;
 
-  banners: any[] | undefined;
+  banners: Image[] | undefined;
 
-  images: any[] | undefined;
-
-  images2: any[] | undefined;
+  images!: Image[]
   
   responsiveOptions: any[] | undefined;
   
@@ -24,12 +23,15 @@ export class ServicesPageComponent {
 
 
   ngOnInit() {
-      this.photoService.getLandingImages().then((images) => (this.images = images));
+      this.photoService.getLandingImages().then((images) => {
+        this.images = images
+        console.log("LENGHT: ", this.images.length)
+      });
       this.photoService.getImages().then((banners) => (this.banners = banners));
       this.responsiveOptions = [
           {
               breakpoint: '1024px',
-              numVisible: 5
+              numVisible: 3
           },
           {
               breakpoint: '768px',
@@ -203,4 +205,6 @@ export class ServicesPageComponent {
           },
       ];
   }
+
+  getVisibleItems () { return this.items.length < 3 ? this.items.length : 3; }
 }

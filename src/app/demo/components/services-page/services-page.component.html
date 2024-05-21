@@ -149,27 +149,24 @@
             <div class="grid justify-content-center">
                 <div class="bg-white border border-gray-200 rounded-lg shadow col-12 mt-8 mb-8 p-2 md:p-8">
                     <div
-                        class="flex flex-column justify-content-center align-items-center text-center px-3 py-3 md:py-0">
+                        class="flex flex-column justify-content-center align-items-center text-center px-3 py-0 md:py-3">
 
-                        <!-- Carosel rau khí hữu canh -->
-                        <p-carousel [value]="images" [numVisible]="3" [numScroll]="3" [circular]="true"
-                            [responsiveOptions]="responsiveOptions" autoplayInterval="3000">
-                            <ng-template let-item pTemplate="item">
-                                <div class="border-1 surface-border border-round m-2 p-3">
-                                    <div class="mb-3">
-                                        <div class="relative mx-auto">
-                                            <img src="{{ item.itemImageSrc }}" [alt]="item.alt"
-                                                class="w-full border-round" />
-                                        </div>
+                        <ng-container *ngIf="images && images.length > 0">
+                            <div class="hidden md:flex">
+                                <div class="grid grid-rows-5 gap-4">
+                                    <div *ngFor="let image of images">
+                                        <img class="h-auto max-w-56 rounded-lg"
+                                            [src]="image.previewImageSrc" alt="image.alt">
                                     </div>
                                 </div>
-                            </ng-template>
-                        </p-carousel>
+                            </div>
+                        </ng-container>
+                          
 
                         <h1
-                        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                        class="mb-2 md:mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                         Dinh Dưỡng Hữu Cơ</h1>
-                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-2xl mt-4 text-justify"
+                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-md md:text-2xl mt-2 md:mt-4 text-justify"
                             style="max-width:800px;">Bạn đang tìm kiếm một giải pháp dinh dưỡng, an toàn, hiệu quả cho việc trồng rau
                             Sản phẩm <strong class="font-semibold text-gray-900 dark:text-white">Dinh Dưỡng Hữu Cơ Thuần Thực Vật NewsunShine</strong> là giải pháp hoàn hảo. 
                             Với cam kết cung cấp nguồn dinh dưỡng hữu cơ chất lượng nhất,
@@ -248,174 +245,46 @@
 
             <!-- 3/ START ZONE: RAU KHÍ CANH TẠI NHÀ – LÀM NÔNG TRONG PHỐ -->
             <div>
-                <div class="flex flex-row">
-                    <div>
+                <div class="flex flex-col md:flex-row">
+                    <div class="basis-1 md:basis-3/4">
                         <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                             Rau khí canh tại nhà - Làm nông trong phố
                         </h1>
-                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-2xl mt-4 text-justify" style="max-width:800px;">
+                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-md md:text-2xl mt-4 mb-3 text-justify" style="max-width:800px;">
                             Ngày nay với xu hướng sử dụng thực phẩm sạch là nhu cầu thiết yếu của người tiêu dùng, chính vì thế nhiều hộ gia đình
                             thường trồng rau sạch tại nhà để sử dụng cho mỗi bữa ăn, tuy nhiên điều này vẫn còn hạn chế với những gia đình có diện
                             tích đất ít hoặc những hộ dân sinh sống ở những nơi đô thị.
                         </p>
+                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-md md:text-2xl mt-4 mb-3 text-justify" style="max-width:800px;">
+                            Bên cạnh đó tình trạng biến đổi khí hậu, ngập mặn, thiếu nước… cũng là nguyên nhân dẫn đến nhiều hộ gia đình khó khăn hơn trong việc sở hữu một vườn rau sạch tại nhà.
+                        </p>
+                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-md md:text-2xl mt-4 mb-3 text-justify" style="max-width:800px;">
+                            Thấu hiểu được hiện trạng trên, Công Ty Cổ Phần Thế Giới An Lạc đã mang đến một giải pháp nhằm phục vụ nhu cầu của khách hàng hiện nay, đó là
+                            <strong class="font-semibold text-gray-900 dark:text-white">MÔ HÌNH RAU KHÍ CANH TẠI NHÀ</strong>
+                        </p>
+                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-md md:text-2xl mt-4 mb-3 text-justify" style="max-width:800px;">
+                            Mô hình trồng rau bằng phương pháp khí canh là một mô hình trồng rau tiên tiến khá đơn giản, ít tốn chi phí, thẩm mỹ cao, tối ưu hóa không gian, đồng thời đảm bảo nguồn rau sạch và an toàn cho người tiêu dùng.
+                        </p>
+                        <p class="text-gray-900 sm:line-height-2 md:line-height-4 text-md md:text-2xl mt-4 mb-3 text-justify" style="max-width:800px;">
+                            Ngoài việc cung cấp rau sạch, chất lượng an toàn tại nhà, mô hình này còn mang đến cho gia đình bạn một cảnh quan đẹp hơn, đồng thời làm cho không khí trong gia đình bạn trở nên trong lành hơn.
+                        </p>
                     </div>
-                    <div class="rounded-lg px-4">
-                        <img class="h-auto max-w-md rounded-lg" src="assets/demo/images/landing/rau-khi-canh-tai-nha-1.jpg" alt="Trồng rau khí canh tại nhà 1">
-                        <blockquote class="max-w-md">
-                            <p class="text-xl italic text-justify font-semibold text-gray-900 dark:text-white">
-                                Chị Hoa ( Đức Hoà ) - Tôi đã từng trồng rau qua rất nhiều cách, trong đó cách trồng rau bằng công nghệ Khí Canh,
-                                là phương pháp tối ưu nhất mà tôi biết hiện nay.</p>
-                        </blockquote>
+                    <div class="rounded-lg px-0 mt-4 md:mt-0 md:px-4">
+                        <img class="h-auto max-w-sm rounded-lg" src="assets/demo/images/landing/rau-khi-canh-tai-nha-1.jpg" alt="Trồng rau khí canh tại nhà 1">
+                        <div class="blockquote">
+                            <blockquote class="w-full">
+                                <p class="text-xl italic text-justify font-semibold text-gray-900 dark:text-white">
+                                    Chị Hoa ( Đức Hoà ) - Tôi đã từng trồng rau qua rất nhiều cách, trong đó cách trồng rau bằng công nghệ Khí Canh,
+                                    là phương pháp tối ưu nhất mà tôi biết hiện nay.</p>
+                            </blockquote>
+                        </div>
                     </div>
                 </div>
-
-                <ul class="space-y-4 text-gray-500 list-inside dark:text-gray-400">
-                    <li>
-                        <div
-                            style="padding:2px; border-radius:10px; background: linear-gradient(90deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2)), linear-gradient(180deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2));">
-                            <div class="p-3 surface-card h-full" style="border-radius:8px;">
-                                <div class="flex flex-row items-center mb-2">
-                                    <svg class="me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                                        style="width: 1.5rem; height: 1.5rem;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                    </svg>
-                                    <p class="text-900 text-lg">Rau sạch an toàn</p>
-                                </div>
-                                <p class="text-600 text-justify">Trồng rau theo phương pháp khí canh giúp loại bỏ hoàn toàn hóa
-                                    chất, thuốc trừ sâu, đảm bảo an toàn cho sức khỏe gia đình bạn.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            style="padding:2px; border-radius:10px; background: linear-gradient(90deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2)), linear-gradient(180deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2));">
-                            <div class="p-3 surface-card h-full" style="border-radius:8px;">
-                                <div class="flex flex-row items-center mb-2">
-                                    <svg class="me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                                        style="width: 1.5rem; height: 1.5rem;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                    </svg>
-                                    <p class="text-900 text-lg">Tiết kiệm chi phí</p>
-                                </div>
-                                <p class="text-600 text-justify">Tiết kiệm 70% nước, 50% phân bón so với phương pháp trồng rau
-                                    truyền thống.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            style="padding:2px; border-radius:10px; background: linear-gradient(90deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2)), linear-gradient(180deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2));">
-                            <div class="p-3 surface-card h-full" style="border-radius:8px;">
-                                <div class="flex flex-row items-center mb-2">
-                                    <svg class="me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                                        style="width: 1.5rem; height: 1.5rem;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                    </svg>
-                                    <p class="text-900 text-lg">Năng suất cao</p>
-                                </div>
-                                <p class="text-600 text-justify">Rau phát triển nhanh, cho năng suất cao hơn so với trồng rau thổ
-                                    canh.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            style="padding:2px; border-radius:10px; background: linear-gradient(90deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2)), linear-gradient(180deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2));">
-                            <div class="p-3 surface-card h-full" style="border-radius:8px;">
-                                <div class="flex flex-row items-center mb-2">
-                                    <svg class="me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                                        style="width: 1.5rem; height: 1.5rem;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                    </svg>
-                                    <p class="text-900 text-lg">Dễ dàng sử dụng</p>
-                                </div>
-                                <p class="text-600 text-justify">Lắp ráp đơn giản, phù hợp với mọi đối tượng, ngay cả người mới bắt
-                                    đầu.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            style="padding:2px; border-radius:10px; background: linear-gradient(90deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2)), linear-gradient(180deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2));">
-                            <div class="p-3 surface-card h-full" style="border-radius:8px;">
-                                <div class="flex flex-row items-center mb-2">
-                                    <svg class="me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                                        style="width: 1.5rem; height: 1.5rem;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                    </svg>
-                                    <p class="text-900 text-lg">Thiết kế thông minh</p>
-                                </div>
-                                <p class="text-600 text-justify">Kích thước nhỏ gọn, tiết kiệm diện tích, phù hợp với mọi không
-                                    gian.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            style="padding:2px; border-radius:10px; background: linear-gradient(90deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2)), linear-gradient(180deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2));">
-                            <div class="p-3 surface-card h-full" style="border-radius:8px;">
-                                <div class="flex flex-row items-center mb-2">
-                                    <svg class="me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                                        style="width: 1.5rem; height: 1.5rem;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                    </svg>
-                                    <p class="text-900 text-lg">Màu sắc</p>
-                                </div>
-                                <p class="text-600 text-justify">Màu đen giúp tản nhiệt tốt hơn, thích hợp trồng ở những vùng có khí
-                                    hậu nóng.</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div
-                            style="padding:2px; border-radius:10px; background: linear-gradient(90deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2)), linear-gradient(180deg, rgba(253, 228, 165, 0.2),rgba(187, 199, 205, 0.2));">
-                            <div class="p-3 surface-card h-full" style="border-radius:8px;">
-                                <div class="flex flex-row items-center mb-2">
-                                    <svg class="me-2 text-green-500 dark:text-green-400 flex-shrink-0"
-                                        style="width: 1.5rem; height: 1.5rem;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                    </svg>
-                                    <p class="text-900 text-lg">Với phương pháp mới này bạn sẽ</p>
-                                </div>
-                                <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
-                                    <li>
-                                        <p class="text-600 text-justify">Tận hưởng niềm vui tự tay trồng rau sạch cho gia đình.</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-600 text-justify">Có nguồn rau tươi ngon, an toàn để sử dụng mỗi ngày.</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-600 text-justify">Tiết kiệm chi phí và thời gian chăm sóc rau.</p>
-                                    </li>
-                                    <li>
-                                        <p class="text-600 text-justify">Tạo không gian xanh mát cho ngôi nhà của bạn.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-            
-            
-                    </li>
-                </ul>
             </div>
-
         </div>
+        <!-- 3/ END ZONE: RAU KHÍ CANH TẠI NHÀ – LÀM NÔNG TRONG PHỐ -->
 
-        <!-- Trụ rau khí canh -->
+        <!-- 4/ START ZONE: DU PHÀ -->
         <div class="py-4 px-4 lg:px-8 mt-5 mx-0 lg:mx-8 grid grid-cols-2 md:grid-cols-4 gap-4"
             style="place-content: center;">
             <div class="text-center mb-4">
@@ -632,43 +501,5 @@
                 </div>
             </div>
         </div>
-
-        <!-- FOOTER  -->
-
-        <!-- <div class="bg-white border-t-2 w-full py-4 px-4">
-            <div class="grid justify-content-between">
-                <div class="col-12 md:col-2">
-                    <a (click)="router.navigate(['/'], {fragment: 'home'})"
-                        class="flex flex-wrap align-items-center justify-content-center md:justify-content-start md:mb-0 mb-3 cursor-pointer">
-                        <h4 class="font-medium text-3xl text-900">Thế giới An Lạc</h4>
-                    </a>
-                </div>
-
-                <div class="col-12 md:col-5 lg:col-5">
-                    <div class="grid text-center md:text-left">
-                        <div class="col-12 md:col-4">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Giới thiệu</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chúng tôi</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Tin tức</a>
-                        </div>
-
-                        <div class="col-12 md:col-4 mt-4 md:mt-0">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Cộng đồng</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Facebook</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Zalo</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">FAQ</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Bài viết</a>
-                        </div>
-
-                        <div class="col-12 md:col-4 mt-4 md:mt-0">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Chính sách</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách thương hiệu</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách bảo mật</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Điều khoản dịch vụ</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>

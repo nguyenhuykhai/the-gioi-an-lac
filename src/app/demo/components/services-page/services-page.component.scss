@@ -7,6 +7,9 @@
             height: 400px;
         }
     }
+    .blockquote {
+        max-width: 24rem;
+    }
 }
 
 @media (min-width: 992px) {
@@ -18,10 +21,16 @@
             height: 315px;
         }
     }
+    .blockquote {
+        max-width: 24rem;
+    }
 }
 
 @media (max-width: 991px) {
     .embed-video {
         display: none;
+    }
+    .blockquote {
+        max-width: 100%;
     }
 }
