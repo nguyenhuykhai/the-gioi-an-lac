@@ -1,6 +1,15 @@
+:host ::ng-deep .custom-scroll-top button {
+    background: black;
+  }
 .contact {
     position: fixed;
     z-index: 50;
     bottom: 25rem;
     right: 1.4rem;
+}
+
+@media (max-width: 991px) {
+    .contact {
+        display: none;
+    }
 }

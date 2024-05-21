@@ -10,23 +10,12 @@
 
     <p-menubar [model]="items" class="cursor-pointer w-full md:hidden">
         <ng-template pTemplate="item" let-item>
-            <a [routerLink]="item.route" class="p-menuitem-link">
+            <a (click)="navigate(item.route, item.fragment)" class="p-menuitem-link">
                 <span [class]="item.icon"></span>
                 <span class="ml-2">{{ item.label }}</span>
             </a>
-            <!-- <ng-container *ngIf="item.route; else elseBlock">
-                <a [routerLink]="item.route" class="p-menuitem-link">
-                    <span [class]="item.icon"></span>
-                    <span class="ml-2">{{ item.label }}</span>
-                </a>
-            </ng-container>
-            <ng-template #elseBlock>
-                <a [href]="item.url" class="p-menuitem-link">
-                    <span [class]="item.icon"></span>
-                    <span class="ml-2">{{ item.label }}</span>
-                </a>
-            </ng-template> -->
         </ng-template>
+        
         <ng-template pTemplate="end">
             <a class="flex flex-column group-logo w-full" href="#">
                 <p class="text-900 font-medium text-md py-4 line-height-3 uppercase">Công Ty
@@ -79,18 +68,10 @@
             </div>
             <p-menubar [model]="items">
                 <ng-template pTemplate="item" let-item>
-                    <ng-container *ngIf="item.route; else elseBlock">
-                        <a [routerLink]="item.route" class="p-menuitem-link">
-                            <span [class]="item.icon"></span>
-                            <span class="ml-2">{{ item.label }}</span>
-                        </a>
-                    </ng-container>
-                    <ng-template #elseBlock>
-                        <a [href]="item.url" class="p-menuitem-link">
-                            <span [class]="item.icon"></span>
-                            <span class="ml-2">{{ item.label }}</span>
-                        </a>
-                    </ng-template>
+                    <a (click)="navigate(item.route, item.fragment)" class="p-menuitem-link">
+                        <span [class]="item.icon"></span>
+                        <span class="ml-2">{{ item.label }}</span>
+                    </a>
                 </ng-template>
             </p-menubar>
         </div>

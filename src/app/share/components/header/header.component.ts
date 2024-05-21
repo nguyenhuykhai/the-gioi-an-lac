@@ -10,164 +10,8 @@ import { MenuItem } from 'primeng/api';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  public items: MenuItem[] = [
-    {
-      label: 'Trang chủ',
-      icon: 'pi pi-home',
-      route: '/default'
-    },
-    {
-      label: 'Sản phẩm - Dịch Vụ',
-      icon: 'pi pi-list',
-      route: '/default/services',
-      items: [
-        {
-          label: 'Trụ',
-        },
-        {
-          label: 'Dinh Dưỡng Hữu Cơ',
-        },
-        {
-          label: 'Rau khí canh',
-        },
-        {
-          label: 'Du phà',
-        }
-      ]
-    },
-    {
-      label: 'Hệ thống Đại lý',
-      icon: 'pi pi-building',
-      route: '/default',
-      items: [
-        {
-          label: 'Khu vực Đông Bắc Bộ',
-          route: '/default',
-          items: [
-            {
-              label: 'TP Lạng Sơn',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Đồng Bằng Sông Hồng',
-          route: '/default',
-          items: [
-            {
-              label: 'TP Hoà Bình',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Đông Nam Bộ',
-          route: '/default',
-          items: [
-            {
-              label: 'TP Biên Hoà',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Thủ Đô Hà Nội',
-          route: '/default',
-          items: [
-            {
-              label: 'Hà Nội',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Miền Trung',
-          route: '/default',
-          items: [
-            {
-              label: 'Đà Nẵng',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Tây Bắc Bộ',
-          route: '/default',
-          items: [
-            {
-              label: 'TP Lào Cai',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Tây Nguyên',
-          route: '/default',
-          items: [
-            {
-              label: 'TP Lạng Sơn',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Khu vực Đông Bắc Bộ',
-          route: '/default',
-          items: [
-            {
-              label: 'TP Buôn Ma Thuột',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Miền Tây Nam Bộ',
-          route: '/default',
-          items: [
-            {
-              label: 'Long An',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Khu Vực Cần Thơ',
-          route: '/default',
-          items: [
-            {
-              label: 'Cần Thơ',
-              route: '/default'
-            }
-          ]
-        },
-        {
-          label: 'Hồ Chí Minh',
-          route: '/default',
-          items: [
-            {
-              label: 'Kinh Dương Vương',
-              route: '/default'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      label: 'Tin tức',
-      icon: 'pi pi-megaphone',
-      route: '/default'
-    },
-    {
-      label: 'Bảng giá',
-      icon: 'pi pi-tag',
-      route: '/default'
-    },
-    {
-      label: 'Liên hệ',
-      icon: 'pi pi-briefcase',
-      route: '/default'
-    },
-  ];
+
+  public items: MenuItem[] | undefined;
 
   banners: any[] | undefined;
 
@@ -199,167 +43,180 @@ export class HeaderComponent {
         numVisible: 1
       }
     ];
-    // this.items = [
-    //   {
-    //     label: 'Trang chủ',
-    //     icon: 'pi pi-home',
-    //     route: '/default'
-    //   },
-    //   {
-    //     label: 'Sản phẩm - Dịch Vụ',
-    //     icon: 'pi pi-list',
-    //     route: '/default/services',
-    //     items: [
-    //       {
-    //         label: 'Trụ',
-    //       },
-    //       {
-    //         label: 'Dinh Dưỡng Hữu Cơ',
-    //       },
-    //       {
-    //         label: 'Rau khí canh',
-    //       },
-    //       {
-    //         label: 'Du phà',
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Hệ thống Đại lý',
-    //     icon: 'pi pi-building',
-    //     route: '/default',
-    //     items: [
-    //       {
-    //         label: 'Khu vực Đông Bắc Bộ',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'TP Lạng Sơn',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Đồng Bằng Sông Hồng',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'TP Hoà Bình',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Đông Nam Bộ',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'TP Biên Hoà',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Thủ Đô Hà Nội',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'Hà Nội',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Miền Trung',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'Đà Nẵng',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Tây Bắc Bộ',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'TP Lào Cai',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Tây Nguyên',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'TP Lạng Sơn',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Khu vực Đông Bắc Bộ',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'TP Buôn Ma Thuột',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Miền Tây Nam Bộ',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'Long An',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Khu Vực Cần Thơ',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'Cần Thơ',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       },
-    //       {
-    //         label: 'Hồ Chí Minh',
-    //         route: '/default',
-    //         items: [
-    //           {
-    //             label: 'Kinh Dương Vương',
-    //             route: '/default'
-    //           }
-    //         ]
-    //       }
-    //     ]
-    //   },
-    //   {
-    //     label: 'Tin tức',
-    //     icon: 'pi pi-megaphone',
-    //     route: '/default'
-    //   },
-    //   {
-    //     label: 'Bảng giá',
-    //     icon: 'pi pi-tag',
-    //     route: '/default'
-    //   },
-    //   {
-    //     label: 'Liên hệ',
-    //     icon: 'pi pi-briefcase',
-    //     route: '/default'
-    //   },
-    // ];
+    this.items = [
+      {
+        label: 'Trang chủ',
+        icon: 'pi pi-home',
+        route: '/default'
+      },
+      {
+        label: 'Sản phẩm - Dịch Vụ',
+        icon: 'pi pi-list',
+        route: '/default/services',
+        fragment: '',
+        items: [
+          {
+            label: 'Trụ',
+            route: '/default/services',
+            fragment: 'rau-trong-bang-tru',
+          },
+          {
+            label: 'Dinh Dưỡng Hữu Cơ',
+            route: '/default/services',
+            fragment: 'dinh-duong-huu-co',
+          },
+          {
+            label: 'Rau khí canh',
+            route: '/default/services',
+            fragment: 'rau-khi-canh-tai-nha',
+          },
+          {
+            label: 'Du phà',
+            route: '/default/services',
+            fragment: 'du-pha',
+          }
+        ]
+      },
+      {
+        label: 'Hệ thống Đại lý',
+        icon: 'pi pi-building',
+        route: '/default',
+        items: [
+          {
+            label: 'Khu vực Đông Bắc Bộ',
+            route: '/default',
+            items: [
+              {
+                label: 'TP Lạng Sơn',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Đồng Bằng Sông Hồng',
+            route: '/default',
+            items: [
+              {
+                label: 'TP Hoà Bình',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Đông Nam Bộ',
+            route: '/default',
+            items: [
+              {
+                label: 'TP Biên Hoà',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Thủ Đô Hà Nội',
+            route: '/default',
+            items: [
+              {
+                label: 'Hà Nội',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Miền Trung',
+            route: '/default',
+            items: [
+              {
+                label: 'Đà Nẵng',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Tây Bắc Bộ',
+            route: '/default',
+            items: [
+              {
+                label: 'TP Lào Cai',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Tây Nguyên',
+            route: '/default',
+            items: [
+              {
+                label: 'TP Lạng Sơn',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Khu vực Đông Bắc Bộ',
+            route: '/default',
+            items: [
+              {
+                label: 'TP Buôn Ma Thuột',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Miền Tây Nam Bộ',
+            route: '/default',
+            items: [
+              {
+                label: 'Long An',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Khu Vực Cần Thơ',
+            route: '/default',
+            items: [
+              {
+                label: 'Cần Thơ',
+                route: '/default'
+              }
+            ]
+          },
+          {
+            label: 'Hồ Chí Minh',
+            route: '/default',
+            items: [
+              {
+                label: 'Kinh Dương Vương',
+                route: '/default'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Tin tức',
+        icon: 'pi pi-megaphone',
+        route: '/default'
+      },
+      {
+        label: 'Bảng giá',
+        icon: 'pi pi-tag',
+        route: '/default'
+      },
+      {
+        label: 'Liên hệ',
+        icon: 'pi pi-briefcase',
+        route: '/default'
+      },
+    ];
   }
 
   toggleMenuBar() {
     this.isHiddenMenuBarResponsive = !this.isHiddenMenuBarResponsive;
+  }
+
+  navigate(route: string, fragment: string): void {
+    this.router.navigate([route], { fragment });
   }
 }

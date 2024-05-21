@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,  } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
@@ -6,10 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  constructor() { }
-
-  ngOnInit() {}
-
+  
   openLink(link: string): void {
     window.open(`${link}`, '_blank');
   }

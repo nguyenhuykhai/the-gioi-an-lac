@@ -18,15 +18,16 @@ import { DefaultLayoutComponent } from "./share/layout/default-layout/default-la
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) }
                 ]
             },
-            { path: 'default', component: DefaultLayoutComponent,
+            { 
+                path: 'default', component: DefaultLayoutComponent,
                 children: [
                     { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
-                    { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule)}
+                    { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule) }
                 ]
             },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
-            { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule)},
+            { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule) },
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })

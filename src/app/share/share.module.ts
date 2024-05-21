@@ -18,7 +18,9 @@ import { OrderListModule } from 'primeng/orderlist';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { RatingModule } from 'primeng/rating';
-
+import { ScrollTopModule } from 'primeng/scrolltop';
+import { DockModule } from 'primeng/dock';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [],
@@ -42,6 +44,9 @@ import { RatingModule } from 'primeng/rating';
     InputTextModule,
     DropdownModule,
     RatingModule,
+    ScrollTopModule,
+    DockModule,
+    RadioButtonModule
   ],
   exports: [
     DividerModule,
@@ -62,6 +67,9 @@ import { RatingModule } from 'primeng/rating';
     InputTextModule,
     DropdownModule,
     RatingModule,
+    ScrollTopModule,
+    DockModule,
+    RadioButtonModule
   ]
 })
 export class ShareModule { }
