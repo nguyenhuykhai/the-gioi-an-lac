@@ -1,5 +1,5 @@
 <div
-    class="bg-white border-b-2 py-4 flex align-items-center justify-content-between relative lg:static">
+    class="bg-white border-b-2 pt-2 md:pt-4 pb-4 flex align-items-center justify-content-between relative lg:static">
     <a class="hidden md:flex flex-column align-items-center group-logo" href="#">
         <p class="text-900 font-medium text-lg py-2 line-height-3 uppercase" style="text-align: center;">Công Ty
             Cổ
@@ -7,16 +7,38 @@
             <br /> Thế Giới An Lạc
         </p>
     </a>
-    <!-- <a pRipple class="cursor-pointer block lg:hidden text-700" pStyleClass="@next" enterClass="hidden"
+
+    <p-menubar [model]="items" class="cursor-pointer block w-full md:hidden">
+        <ng-template pTemplate="item" let-item>
+            <ng-container *ngIf="item.route; else elseBlock">
+                <a [routerLink]="item.route" class="p-menuitem-link">
+                    <span [class]="item.icon"></span>
+                    <span class="ml-2">{{ item.label }}</span>
+                </a>
+            </ng-container>
+            <ng-template #elseBlock>
+                <a [href]="item.url" class="p-menuitem-link">
+                    <span [class]="item.icon"></span>
+                    <span class="ml-2">{{ item.label }}</span>
+                </a>
+            </ng-template>
+        </ng-template>
+    </p-menubar>
+    <a class="flex flex-column md:hidden group-logo w-full" href="#">
+        <p class="text-900 font-medium text-sm py-2 pl-2 line-height-3 uppercase">Công Ty
+            Cổ Phần Thế Giới An Lạc
+        </p>
+    </a>
+    <!-- <a pRipple class="cursor-pointer block md:hidden text-700 px-2" pStyleClass="@next" enterClass="hidden"
         leaveToClass="hidden" [hideOnOutsideClick]="true">
-        <i class="pi pi-bars text-4xl"></i>
+        <i class="pi pi-bars text-2xl"></i>
     </a> -->
     <div class="align-items-center surface-0 flex-grow-1 justify-content-between hidden lg:flex absolute lg:static w-full left-0 px-6 lg:px-0 z-2"
         style="top:120px">
         <div class="flex flex-col header-navbar">
             <div>
                 <ul
-                    class="list-none p-0 m-0 flex lg:align-items-center select-none flex-column lg:flex-row cursor-pointer">
+                    class="list-none p-0 m-0 hidden md:flex lg:align-items-center select-none flex-column lg:flex-row cursor-pointer">
                     <!-- Location contact -->
                     <li class="contact-item">
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-red-600 mr-2"

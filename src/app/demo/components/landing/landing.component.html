@@ -50,7 +50,7 @@
 				<ng-template let-blogs pTemplate="gridItem">
 					<div class="grid grid-nogutter bg-[#f9fafb]">
 					<div class="col-12 md:col-4" *ngFor="let blog of blogs">
-						<div class="card m-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="min-height: 28rem;">
+						<div class="card m-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="height: 30rem;">
 							<div class="flex flex-column align-items-center text-center mb-3">
 								<img [src]="'assets/demo/images/highlight/' + blog.itemImageSrc" [alt]="blog.title" class="cursor-pointer w-9 h-52 object-cover shadow-2 my-3  mx-0 transition-all duration-300 filter brightness-100 hover:brightness-110 "/>
                                 <p class="cursor-pointer text-lg font-bold text-justify text-gray-900 dark:text-white">{{blog.title}}</p>
@@ -62,43 +62,5 @@
 				</ng-template>
 			</p-dataView>
 		</div>
-
-        <!-- FOOTER  -->
-
-        <div class="bg-white border-t-2 w-full py-4 px-4">
-            <div class="grid justify-content-between">
-                <div class="col-12 md:col-2">
-                    <a (click)="router.navigate(['/'], {fragment: 'home'})"
-                        class="flex flex-wrap align-items-center justify-content-center md:justify-content-start md:mb-0 mb-3 cursor-pointer">
-                        <h4 class="font-medium text-3xl text-900">Thế giới An Lạc</h4>
-                    </a>
-                </div>
-
-                <div class="col-12 md:col-5 lg:col-5">
-                    <div class="grid text-center md:text-left">
-                        <div class="col-12 md:col-4">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Giới thiệu</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chúng tôi</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Tin tức</a>
-                        </div>
-
-                        <div class="col-12 md:col-4 mt-4 md:mt-0">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Cộng đồng</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Facebook</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Zalo</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">FAQ</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Bài viết</a>
-                        </div>
-
-                        <div class="col-12 md:col-4 mt-4 md:mt-0">
-                            <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Chính sách</h4>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách thương hiệu</a>
-                            <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách bảo mật</a>
-                            <a class="line-height-3 text-xl block cursor-pointer text-700">Điều khoản dịch vụ</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
