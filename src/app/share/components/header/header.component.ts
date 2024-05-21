@@ -47,32 +47,32 @@ export class HeaderComponent {
       {
         label: 'Trang chủ',
         icon: 'pi pi-home',
-        route: '/default'
+        route: '/'
       },
       {
         label: 'Sản phẩm - Dịch Vụ',
         icon: 'pi pi-list',
-        route: '/default/services',
+        route: '/services',
         fragment: '',
         items: [
           {
             label: 'Trụ',
-            route: '/default/services',
+            route: '/services',
             fragment: 'rau-trong-bang-tru',
           },
           {
             label: 'Dinh Dưỡng Hữu Cơ',
-            route: '/default/services',
+            route: '/services',
             fragment: 'dinh-duong-huu-co',
           },
           {
             label: 'Rau khí canh',
-            route: '/default/services',
+            route: '/services',
             fragment: 'rau-khi-canh-tai-nha',
           },
           {
             label: 'Du phà',
-            route: '/default/services',
+            route: '/services',
             fragment: 'du-pha',
           }
         ]
@@ -80,115 +80,115 @@ export class HeaderComponent {
       {
         label: 'Hệ thống Đại lý',
         icon: 'pi pi-building',
-        route: '/default',
+        route: '/',
         items: [
           {
             label: 'Khu vực Đông Bắc Bộ',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'TP Lạng Sơn',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Đồng Bằng Sông Hồng',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'TP Hoà Bình',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Đông Nam Bộ',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'TP Biên Hoà',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Thủ Đô Hà Nội',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'Hà Nội',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Miền Trung',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'Đà Nẵng',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Tây Bắc Bộ',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'TP Lào Cai',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Tây Nguyên',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'TP Lạng Sơn',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Khu vực Đông Bắc Bộ',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'TP Buôn Ma Thuột',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Miền Tây Nam Bộ',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'Long An',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Khu Vực Cần Thơ',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'Cần Thơ',
-                route: '/default'
+                route: '/'
               }
             ]
           },
           {
             label: 'Hồ Chí Minh',
-            route: '/default',
+            route: '/',
             items: [
               {
                 label: 'Kinh Dương Vương',
-                route: '/default'
+                route: '/'
               }
             ]
           }
@@ -197,17 +197,17 @@ export class HeaderComponent {
       {
         label: 'Tin tức',
         icon: 'pi pi-megaphone',
-        route: '/default'
+        route: '/'
       },
       {
         label: 'Bảng giá',
         icon: 'pi pi-tag',
-        route: '/default'
+        route: '/'
       },
       {
         label: 'Liên hệ',
         icon: 'pi pi-briefcase',
-        route: '/default'
+        route: '/'
       },
     ];
   }
