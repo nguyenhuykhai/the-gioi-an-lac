@@ -22,7 +22,8 @@ import { DefaultLayoutComponent } from "./share/layout/default-layout/default-la
                 path: 'default', component: DefaultLayoutComponent,
                 children: [
                     { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
-                    { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule) }
+                    { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule) },
+                    { path: 'dealers', loadChildren: () => import('./demo/components/dealer-system/dealer-system.module').then(m => m.DealerSystemModule)}
                 ]
             },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },

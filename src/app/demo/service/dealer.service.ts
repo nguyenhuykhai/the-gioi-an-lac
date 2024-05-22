@@ -1,16 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Blog } from '../api/global';
+import { Dealer } from '../api/global';
 
 @Injectable()
-export class ShareService {
+export class DealerService {
 
     constructor(private http: HttpClient) { }
 
-    getHighLighBlog() {
-        return this.http.get<any>('assets/demo/data/blog.json')
+    getDealers() {
+        return this.http.get<any>('assets/demo/data/dealers-system.json')
             .toPromise()
-                .then(res => res.data as Blog[])
+                .then(res => res.data as Dealer[])
                 .then(data => data);
     
     }

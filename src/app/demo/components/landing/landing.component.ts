@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
-import { PhotoService, ShareService } from '../../service';
+import { PhotoService, BlogService } from '../../service';
 import { MenuItem } from 'primeng/api';
 
 // IMPORT FAKE DATA
@@ -51,7 +51,7 @@ export class LandingComponent {
         public layoutService: LayoutService,
         public router: Router,
         private photoService: PhotoService,
-        private shareService: ShareService
+        private blogService: BlogService
     ) { }
 
 
@@ -238,7 +238,7 @@ export class LandingComponent {
     }
 
     initHighLighBlog() {
-        this.shareService.getHighLighBlog().then((blogs) => {
+        this.blogService.getHighLighBlog().then((blogs) => {
             this.blogs = blogs;
             console.log("BLOG: ", this.blogs);
         });

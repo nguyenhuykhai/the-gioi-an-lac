@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { PhotoService } from '../../service/photo.service';
@@ -10,7 +10,7 @@ import { Image } from '../../api/image';
     templateUrl: './services-page.component.html',
     styleUrl: './services-page.component.scss'
 })
-export class ServicesPageComponent {
+export class ServicesPageComponent implements OnInit {
     items: MenuItem[] | undefined;
 
     banners: Image[] | undefined;
