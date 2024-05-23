@@ -90,7 +90,7 @@ export class HeaderComponent {
       {
         label: 'Bảng giá',
         icon: 'pi pi-tag',
-        route: '/default'
+        route: '/default/price'
       },
       {
         label: 'Liên hệ',

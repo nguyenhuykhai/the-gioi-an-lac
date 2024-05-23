@@ -10,8 +10,14 @@
     }
     .p-icon-wrapper{
         color: black
-    } 
-  }
+    }
+    @media (max-width: 991px) {
+        .p-menubar-end {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
 
 .group-logo {
     width: 20rem;

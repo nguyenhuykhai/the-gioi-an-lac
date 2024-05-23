@@ -30,3 +30,14 @@ export interface DealerItem {
     fragment?: string;
 }
 
+// PRICE ZONE
+export interface Price {
+    id?: string;
+    category?: string;
+    categoryName?: string;
+    name?: string;
+    description?: string;
+    unit?: string;
+    image?: string;
+    price?: number;
+}

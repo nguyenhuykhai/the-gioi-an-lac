@@ -1,0 +1,45 @@
+<div class="bg-[#f9fafb] flex justify-content-center">
+    <div id="home" class="landing-wrapper overflow-hidden">
+        <div id="about" class="px-2 lg:px-4 mx-0 lg:mx-8 my-5">
+            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                Bảng giá sản phẩm
+            </h1>
+        </div>
+
+        <!-- 1. TRỤ ZONE -->
+        <div class="px-2 lg:px-4 mx-0 lg:mx-8">
+            <h2
+                class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                1/ Trụ
+            </h2>
+            <app-price-item [price]="categoryOne"></app-price-item>
+        </div>
+
+        <!-- 2. DINH DƯỠNG HỮU CƠ ZONE -->
+        <div class="px-2 lg:px-4 mx-0 lg:mx-8">
+            <h2
+                class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                2/ Dinh dưỡng hữu cơ
+            </h2>
+            <app-price-item [price]="categoryTwo"></app-price-item>
+        </div>
+
+        <!-- 3. RAU KHÍ CANH ZONE -->
+        <div class="px-2 lg:px-4 mx-0 lg:mx-8">
+            <h2
+                class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                3/ Rau khí canh
+            </h2>
+            <app-price-item [price]="categoryThree"></app-price-item>
+        </div>
+
+        <!-- 4. DU PHÀ ZONE -->
+        <div class="px-2 lg:px-4 mx-0 lg:mx-8">
+            <h2
+                class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
+                4/ Du phà
+            </h2>
+            <app-price-item [price]="categoryFour"></app-price-item>
+        </div>
+    </div>
+</div>

@@ -21,9 +21,10 @@ import { RatingModule } from 'primeng/rating';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { DockModule } from 'primeng/dock';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { MoneyPipe } from '../money.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [MoneyPipe],
   imports: [
     CommonModule,
     DividerModule,
@@ -69,7 +70,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     RatingModule,
     ScrollTopModule,
     DockModule,
-    RadioButtonModule
+    RadioButtonModule,
+    MoneyPipe
   ]
 })
 export class ShareModule { }

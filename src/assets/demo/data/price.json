@@ -1,0 +1,104 @@
+{
+	"data": [
+		{
+			"id": "1",
+			"category": "tru",
+            "categoryName": "Trụ",
+			"name": "Trụ trắng Loại 1",
+			"description": "12 thớt, 60 hóc",
+            "unit": " trụ + rọ",
+			"image": "tru-den-loai-1.jpg",
+			"price": 350000
+		},
+        {
+			"id": "2",
+			"category": "tru",
+            "categoryName": "Trụ",
+			"name": "Trụ trắng Loại 2",
+			"description": "12 thớt, 60 hóc",
+            "unit": " trụ + rọ",
+			"image": "tru-den-loai-1.jpg",
+			"price": 280000
+		},
+        {
+			"id": "3",
+			"category": "tru",
+            "categoryName": "Trụ",
+			"name": "Trụ đen Loại 1",
+			"description": "12 thớt, 60 hóc",
+            "unit": " trụ + rọ",
+			"image": "tru-den-loai-1.jpg",
+			"price": 280000
+		},
+        {
+			"id": "4",
+			"category": "tru",
+            "categoryName": "Trụ",
+			"name": "Trụ đen Loại 2",
+			"description": "12 thớt, 60 hóc",
+            "unit": " trụ + rọ",
+			"image": "tru-den-loai-1.jpg",
+			"price": 250000
+		},
+        {
+            "id": "5",
+            "category": "dinh-duong-huu-co",
+            "categoryName": "Dinh Dưỡng Hữu Cơ",
+            "name": "Newsunshine",
+            "description": "1 bình 2 lít và 5 lít",
+            "unit": "lít",
+            "image": "new-sun-shine.jpg",
+            "price": 200000
+        },
+        {
+            "id": "6",
+            "category": "dinh-duong-huu-co",
+            "categoryName": "Dinh Dưỡng Hữu Cơ",
+            "name": "Newsun Organic",
+            "description": "1 bình 2 lít và 5 lít",
+            "unit": "lít",
+            "image": "new-sun-shine.jpg",
+            "price": 150000
+        },
+        {
+            "id": "7",
+            "category": "rau-khi-canh",
+            "categoryName": "Rau Khí Canh",
+            "name": "Combo 8 trụ",
+            "description": "Combo gồm: ( lắp đặt, dinh dưỡng + cây giống 12 lần/năm, chăm sóc )",
+            "unit": "none",
+            "image": "rau-khi-canh-combo-8-tru.jpg",
+            "price": 18000000
+        },
+        {
+            "id": "8",
+            "category": "rau-khi-canh",
+            "categoryName": "Rau Khí Canh",
+            "name": "Combo 10 trụ",
+            "description": "Combo gồm: ( lắp đặt, dinh dưỡng + cây giống 12 lần/năm, chăm sóc )",
+            "unit": "none",
+            "image": "rau-khi-canh-combo-8-tru.jpg",
+            "price": 22000000
+        },
+        {
+            "id": "9",
+            "category": "du-pha",
+            "categoryName": "Du phà",
+            "name": "Từ 15 khách trở xuống",
+            "description": "Tối thiểu từ 10 khách, tối đa 50 khách/chuyến",
+            "unit": "khách",
+            "image": "du-pha.jpg",
+            "price": 400000
+        },
+        {
+            "id": "10",
+            "category": "du-pha",
+            "categoryName": "Du phà",
+            "name": "Từ 16 khách trở lên",
+            "description": "Tối thiểu từ 10 khách, tối đa 50 khách/chuyến",
+            "unit": "khách",
+            "image": "du-pha.jpg",
+            "price": 350000
+        }
+	]
+}
