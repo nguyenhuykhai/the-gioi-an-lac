@@ -1,0 +1,14 @@
+:host ::ng-deep .p-ink-active {
+    animation: none !important;
+}
+.search {
+    input {
+      width: 100%;
+      padding: 0.5rem 2rem;
+      border-radius: 5px;
+      border: 1px solid #3333;
+      &:focus {
+        outline: none;
+      }
+    }
+  }

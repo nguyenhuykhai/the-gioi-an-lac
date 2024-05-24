@@ -1,0 +1,22 @@
+@media screen and (min-width: 1960px) {
+    .web {}
+    .mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .web {}
+    .mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .web {
+        display: none;
+    }
+    .mobile {
+        display: grid;
+    }
+}

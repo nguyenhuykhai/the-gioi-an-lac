@@ -80,129 +80,17 @@ export class HeaderComponent {
       {
         label: 'Hệ thống Đại lý',
         icon: 'pi pi-building',
-        route: '/',
-        items: [
-          {
-            label: 'Khu vực Đông Bắc Bộ',
-            route: '/',
-            items: [
-              {
-                label: 'TP Lạng Sơn',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Đồng Bằng Sông Hồng',
-            route: '/',
-            items: [
-              {
-                label: 'TP Hoà Bình',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Đông Nam Bộ',
-            route: '/',
-            items: [
-              {
-                label: 'TP Biên Hoà',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Thủ Đô Hà Nội',
-            route: '/',
-            items: [
-              {
-                label: 'Hà Nội',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Miền Trung',
-            route: '/',
-            items: [
-              {
-                label: 'Đà Nẵng',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Tây Bắc Bộ',
-            route: '/',
-            items: [
-              {
-                label: 'TP Lào Cai',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Tây Nguyên',
-            route: '/',
-            items: [
-              {
-                label: 'TP Lạng Sơn',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Khu vực Đông Bắc Bộ',
-            route: '/',
-            items: [
-              {
-                label: 'TP Buôn Ma Thuột',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Miền Tây Nam Bộ',
-            route: '/',
-            items: [
-              {
-                label: 'Long An',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Khu Vực Cần Thơ',
-            route: '/',
-            items: [
-              {
-                label: 'Cần Thơ',
-                route: '/'
-              }
-            ]
-          },
-          {
-            label: 'Hồ Chí Minh',
-            route: '/',
-            items: [
-              {
-                label: 'Kinh Dương Vương',
-                route: '/'
-              }
-            ]
-          }
-        ]
+        route: '/dealers'
       },
       {
         label: 'Tin tức',
         icon: 'pi pi-megaphone',
-        route: '/'
+        route: '/news'
       },
       {
         label: 'Bảng giá',
         icon: 'pi pi-tag',
-        route: '/'
+        route: '/price'
       },
       {
         label: 'Liên hệ',

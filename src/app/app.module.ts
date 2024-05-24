@@ -11,8 +11,10 @@ import { EventService } from './demo/service/event.service';
 import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
-import { ShareService } from './demo/service';
+import { BlogService, PriceService } from './demo/service';
 import { DefaultLayoutModule } from './share/layout/default-layout/default-layout.module';
+import { DealerService } from './demo/service/dealer.service';
+import { NewsDetailComponent } from './demo/components/news-detail/news-detail.component';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
@@ -20,7 +22,7 @@ import { DefaultLayoutModule } from './share/layout/default-layout/default-layou
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, ShareService
+        PhotoService, ProductService, BlogService, DealerService, PriceService
     ],
     bootstrap: [AppComponent],
 })

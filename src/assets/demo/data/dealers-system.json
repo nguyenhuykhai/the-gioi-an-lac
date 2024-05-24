@@ -1,0 +1,191 @@
+{
+	"data": [
+		{
+			"id": "1",
+			"fragment": "khu-vuc-dong-bac-bo",
+			"name": "Khu vực Đông Bắc Bộ",
+			"description": "Các đại lý phân phối sản phẩm tại khu vực Đông Bắc Bộ",
+            "level": "2",
+			"image": "khu-vuc-dong-bac-bo.png",
+			"quantity": 1,
+			"dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "TP Lạng Sơn",
+                    "address": "TP Lạng Sơn",
+                    "fragment": "tp-lang-son"
+                },
+                {
+                    "id": "2",
+                    "level": "3",
+                    "name": "TP Hoà Bình",
+                    "address": "TP Hoà Bình",
+                    "fragment": "tp-hoa-binh"
+                }
+            ]
+		},
+        {
+			"id": "2",
+			"fragment": "dong-bang-song-hong",
+			"name": "Đồng Bằng Sông Hồng",
+			"description": "Các đại lý phân phối sản phẩm tại khu vực Đồng Bằng Sông Hồng",
+            "level": "2",
+			"image": "khu-vuc-dong-bang-song-hong.png",
+			"quantity": 1,
+			"dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "TP Hoà Bình",
+                    "address": "TP Hoà Bình",
+                    "fragment": "tp-hoa-binh"
+                }
+            ]
+		},
+        {
+            "id": "3",
+            "fragment": "dong-nam-bo",
+            "name": "Đông Nam Bộ",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Đông Nam Bộ",
+            "level": "2",
+            "image": "khu-vuc-dong-nam-bo.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "TP Biên Hoà",
+                    "address": "TP Biên Hoà",
+                    "fragment": "tp-bien-hoa"
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "fragment": "thu-do-ha-noi",
+            "name": "Thủ Đô Hà Nội",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Thủ Đô Hà Nội",
+            "level": "2",
+            "image": "khu-vuc-thu-do-ha-noi.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "Hà Nội",
+                    "address": "Hà Nội",
+                    "fragment": "ha-noi"
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "fragment": "mien-trung",
+            "name": "Miền Trung",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Miền Trung",
+            "level": "2",
+            "image": "khu-vuc-mien-trung.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "Đà Nẵng",
+                    "address": "Đà Nẵng",
+                    "fragment": "da-nang"
+                }
+            ]
+        },
+        {
+            "id": "6",
+            "fragment": "tay-bac-bo",
+            "name": "Tây Bắc Bộ",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Tây Bắc Bộ",
+            "level": "2",
+            "image": "khu-vuc-tay-bac-bo.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "TP Lào Cai",
+                    "address": "TP Lào Cai",
+                    "fragment": "tp-lao-cai"
+                }
+            ]
+        },
+        {
+            "id": "7",
+            "fragment": "tay-nguyen",
+            "name": "Tây Nguyên",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Tây Nguyên",
+            "level": "2",
+            "image": "khu-vuc-tay-nguyen.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "TP Buôn Ma Thuột",
+                    "address": "TP Buôn Ma Thuột",
+                    "fragment": "tp-buon-ma-thuot"
+                }
+            ]
+        },
+        {
+            "id": "8",
+            "fragment": "mien-tay-nam-bo",
+            "name": "Miền Tây Nam Bộ",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Miền Tây Nam Bộ",
+            "level": "2",
+            "image": "khu-vuc-mien-tay-nam-bo.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "Long An",
+                    "address": "Long An",
+                    "fragment": "long-an"
+                }
+            ]
+        },
+        {
+            "id": "9",
+            "fragment": "khu-vuc-can-tho",
+            "name": "Khu Vực Cần Thơ",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Cần Thơ",
+            "level": "2",
+            "image": "khu-vuc-can-tho.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "Cần Thơ",
+                    "address": "Cần Thơ",
+                    "fragment": "can-tho"
+                }
+            ]
+        },
+        {
+            "id": "10",
+            "fragment": "ho-chi-minh",
+            "name": "Hồ Chí Minh",
+            "description": "Các đại lý phân phối sản phẩm tại khu vực Hồ Chí Minh",
+            "level": "2",
+            "image": "khu-vuc-ho-chi-minh.png",
+            "quantity": 1,
+            "dealers": [
+                {
+                    "id": "1",
+                    "level": "3",
+                    "name": "Kinh Dương Vương",
+                    "address": "Kinh Dương Vương",
+                    "fragment": "kinh-duong-vuong"
+                }
+            ]
+        }
+	]
+}

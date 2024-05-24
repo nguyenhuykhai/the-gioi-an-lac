@@ -11,7 +11,11 @@ import { DefaultLayoutComponent } from "./share/layout/default-layout/default-la
                 path: '', component: DefaultLayoutComponent,
                 children: [
                     { path: '', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
-                    { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule) }
+                    { path: 'services', loadChildren: () => import('./demo/components/services-page/services-page.module').then(m => m.ServicesPageModule) },
+                    { path: 'dealers', loadChildren: () => import('./demo/components/dealer-system/dealer-system.module').then(m => m.DealerSystemModule)},
+                    { path: 'price', loadChildren: () => import('./demo/components/price/price.module').then(m => m.PriceModule)},
+                    { path: 'news', loadChildren: () => import('./demo/components/news/news.module').then(m => m.NewsModule) },
+                    { path: 'news/:id', loadChildren: () => import('./demo/components/news-detail/news-detail.module').then(m => m.NewsDetailModule)}
                 ]
             },
             { path: 'notfound', component: NotfoundComponent },
