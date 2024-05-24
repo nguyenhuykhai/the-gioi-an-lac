@@ -85,7 +85,7 @@ export class HeaderComponent {
       {
         label: 'Tin tức',
         icon: 'pi pi-megaphone',
-        route: '/default'
+        route: '/default/news'
       },
       {
         label: 'Bảng giá',

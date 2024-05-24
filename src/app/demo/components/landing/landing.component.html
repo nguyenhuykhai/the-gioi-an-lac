@@ -1,3 +1,6 @@
+<p-blockUI [blocked]="blockedUI">
+    <p-progressSpinner></p-progressSpinner>
+</p-blockUI>
 <div class="bg-[#f9fafb] flex justify-content-center">
     <div id="home" class="landing-wrapper overflow-hidden">
         <div id="about" class="py-4 px-4 lg:px-8 mt-5 mx-0 lg:mx-8">
@@ -34,27 +37,34 @@
             <h2 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
                 Tin tức nổi bật
             </h2>
-			<p-dataView #dv [value]="blogs" filterBy="title" [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
-				<ng-template let-blogs pTemplate="listItem">
-					<div class="col-12" *ngFor="let blog of blogs">
+			<p-dataView #dv [value]="news" filterBy="title" layout="grid">
+				<ng-template let-news pTemplate="listItem">
+					<div class="col-12" *ngFor="let new of news">
 						<div class="flex flex-column md:flex-row align-items-center p-3 w-full">
-							<img [src]="'assets/demo/images/highlight/' + blog.itemImageSrc" [alt]="blog.title" class="my-4 md:my-0 w-9 md:w-10rem shadow-2 mr-5"/>
+							<img [src]="new.image[0]" [alt]="new.title" class="my-4 md:my-0 w-9 md:w-10rem shadow-2 mr-5"/>
 							<div class="flex-1 flex flex-column align-items-center text-center md:text-left">
-                                <p class="text-lg font-bold text-justify text-gray-900 dark:text-white">{{blog.title}}</p>
-								<div class="mb-2">{{blog.description}}</div>
+                                <p class="text-lg font-bold text-justify text-gray-900 dark:text-white">{{new.title}}</p>
+								<div class="mb-2">{{new.subTitle}}</div>
 							</div>
 						</div>
 					</div>
 				</ng-template>
 
-				<ng-template let-blogs pTemplate="gridItem">
+				<ng-template let-news pTemplate="gridItem">
 					<div class="grid grid-nogutter bg-[#f9fafb]">
-					<div class="col-12 md:col-4" *ngFor="let blog of blogs">
+					<div class="col-12 md:col-4" *ngFor="let new of news">
 						<div class="card m-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style="height: 30rem;">
 							<div class="flex flex-column align-items-center text-center mb-3">
-								<img [src]="'assets/demo/images/highlight/' + blog.itemImageSrc" [alt]="blog.title" class="cursor-pointer w-9 h-52 object-cover shadow-2 my-3  mx-0 transition-all duration-300 filter brightness-100 hover:brightness-110 "/>
-                                <p class="cursor-pointer text-lg font-bold text-justify text-gray-900 dark:text-white">{{blog.title}}</p>
-								<div class="mb-3 truncate-three-lines">{{blog.description}}</div>
+								<img
+                                    [src]="new.image[0]"
+                                    [alt]="new.title"
+                                    [routerLink]="['/default/news', new.id]"
+                                    class="cursor-pointer w-9 h-52 object-cover shadow-2 my-3  mx-0 transition-all duration-300 filter brightness-100 hover:brightness-110 "/>
+                                <p
+                                    [routerLink]="['/default/news', new.id]"
+                                    class="cursor-pointer text-lg font-bold text-justify text-gray-900 dark:text-white"
+                                >{{new.title}}</p>
+								<div class="mb-3 truncate-three-lines">{{new.subTitle}}</div>
 							</div>
 						</div>
 					</div>

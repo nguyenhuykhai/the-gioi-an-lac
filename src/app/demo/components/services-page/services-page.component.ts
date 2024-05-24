@@ -24,7 +24,10 @@ export class ServicesPageComponent implements OnInit {
         private route: ActivatedRoute,
         public router: Router,
         private photoService: PhotoService
-    ) { }
+    ) {
+        // Thiết lập title cho trang
+        window.document.title = 'Sản phẩm | Thế giới An Lạc';
+    }
 
 
     ngOnInit() {

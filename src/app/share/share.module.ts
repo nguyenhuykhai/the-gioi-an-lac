@@ -22,6 +22,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { DockModule } from 'primeng/dock';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MoneyPipe } from '../money.pipe';
+import { BlockUIModule } from 'primeng/blockui';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [MoneyPipe],
@@ -47,7 +49,9 @@ import { MoneyPipe } from '../money.pipe';
     RatingModule,
     ScrollTopModule,
     DockModule,
-    RadioButtonModule
+    RadioButtonModule,
+    BlockUIModule,
+    ProgressSpinnerModule
   ],
   exports: [
     DividerModule,
@@ -71,7 +75,9 @@ import { MoneyPipe } from '../money.pipe';
     ScrollTopModule,
     DockModule,
     RadioButtonModule,
-    MoneyPipe
+    MoneyPipe,
+    BlockUIModule,
+    ProgressSpinnerModule
   ]
 })
 export class ShareModule { }

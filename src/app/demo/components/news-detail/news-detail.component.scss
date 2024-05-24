@@ -1,0 +1,54 @@
+.container {
+    max-width: 100%;
+    margin-bottom: 2%;
+
+    .body-container {
+        height: 100%;
+        padding: 0% 5%;
+        margin: auto;
+
+        .truncate-three-lines {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 4.5em;
+            line-height: 1.5rem;
+            text-align: justify;
+        }
+
+        .content {
+            max-width: 95%;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .container {
+        max-width: 100%;
+        margin-bottom: 2%;
+
+        .body-container {
+            height: 100%;
+            padding: 0% 5%;
+            margin: auto;
+
+            .truncate-three-lines {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-height: 4.5em;
+                line-height: 1.5rem;
+                text-align: justify;
+            }
+
+            .content {
+                max-width: 100%;
+                margin: auto;
+            }
+        }
+    }
+}

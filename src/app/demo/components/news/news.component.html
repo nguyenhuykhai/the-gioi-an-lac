@@ -1,0 +1,42 @@
+<div class="container bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
+    <div class="body-container">
+        <p-blockUI [blocked]="blockedUI"><p-progressSpinner></p-progressSpinner></p-blockUI>
+        <section class="bg-white">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-0 relative">
+                <h1
+                    class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
+                    Tin tức
+                </h1>
+                <div class="text-xl text-gray-500 italic font-semibold text-center">
+                    <p>"Cập nhật tin tức và theo dõi sức khỏe</p>
+                    <p>Lợi ích kép cho cuộc sống"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIN TỨC ZONE -->
+        <p-dataView #dv [value]="news" filterBy="title" layout="grid">
+            <ng-template let-news pTemplate="gridItem">
+                <div class="grid grid-nogutter bg-[#f9fafb]">
+                    <div class="col-12 md:col-4" *ngFor="let new of news">
+                        <div class="card m-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                            style="height: 30rem;">
+                            <div class="flex flex-column align-items-center text-center mb-3">
+                                <img
+                                    [routerLink]="['/default/news', new.id]"
+                                    [src]="new.image[0]"
+                                    [alt]="new.title"
+                                    class="cursor-pointer w-9 h-52 object-cover shadow-2 my-3  mx-0 transition-all duration-300 filter brightness-100 hover:brightness-110 " />
+                                <p [routerLink]="['/default/news', new.id]"
+                                    class="cursor-pointer text-lg font-bold text-justify text-gray-900 dark:text-white">
+                                    {{new.title}}</p>
+                                <div class="mb-3 truncate-three-lines">{{new.subTitle}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </p-dataView>
+    </div>
+</div>

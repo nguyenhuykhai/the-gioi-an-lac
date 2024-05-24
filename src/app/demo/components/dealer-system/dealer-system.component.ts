@@ -19,7 +19,12 @@ export class DealerSystemComponent implements OnInit {
 
   constructor(
     private dealerService: DealerService
-  ) { }
+  ) {
+    // Thiết lập title cho trang
+    window.document.title = 'Hệ thống đại lý | Thế giới An Lạc';
+    // Scroll smooth to top lên đầu trang
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   ngOnInit() {
     this.dealerService.getDealers().then((data) => {

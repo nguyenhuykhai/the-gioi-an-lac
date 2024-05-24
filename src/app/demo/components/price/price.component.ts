@@ -17,7 +17,12 @@ export class PriceComponent implements OnInit {
 
   constructor(
     private priceService: PriceService
-  ) { }
+  ) {
+    // Thiết lập title cho trang
+    window.document.title = 'Giá cả | Thế giới An Lạc';
+    // Scroll smooth to top lên đầu trang
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   ngOnInit() {
     this.priceService.getPrice().then((data) => {
