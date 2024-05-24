@@ -47,32 +47,32 @@ export class HeaderComponent {
       {
         label: 'Trang chủ',
         icon: 'pi pi-home',
-        route: '/default'
+        route: '/'
       },
       {
         label: 'Sản phẩm - Dịch Vụ',
         icon: 'pi pi-list',
-        route: '/default/services',
+        route: '/services',
         fragment: '',
         items: [
           {
             label: 'Trụ',
-            route: '/default/services',
+            route: '/services',
             fragment: 'rau-trong-bang-tru',
           },
           {
             label: 'Dinh Dưỡng Hữu Cơ',
-            route: '/default/services',
+            route: '/services',
             fragment: 'dinh-duong-huu-co',
           },
           {
             label: 'Rau khí canh',
-            route: '/default/services',
+            route: '/services',
             fragment: 'rau-khi-canh-tai-nha',
           },
           {
             label: 'Du phà',
-            route: '/default/services',
+            route: '/services',
             fragment: 'du-pha',
           }
         ]
@@ -80,22 +80,22 @@ export class HeaderComponent {
       {
         label: 'Hệ thống Đại lý',
         icon: 'pi pi-building',
-        route: '/default/dealers'
+        route: '/dealers'
       },
       {
         label: 'Tin tức',
         icon: 'pi pi-megaphone',
-        route: '/default/news'
+        route: '/news'
       },
       {
         label: 'Bảng giá',
         icon: 'pi pi-tag',
-        route: '/default/price'
+        route: '/price'
       },
       {
         label: 'Liên hệ',
         icon: 'pi pi-briefcase',
-        route: '/default'
+        route: '/'
       },
     ];
   }

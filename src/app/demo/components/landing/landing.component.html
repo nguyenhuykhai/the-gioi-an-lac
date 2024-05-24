@@ -58,10 +58,10 @@
 								<img
                                     [src]="new.image[0]"
                                     [alt]="new.title"
-                                    [routerLink]="['/default/news', new.id]"
+                                    [routerLink]="['/news', new.id]"
                                     class="cursor-pointer w-9 h-52 object-cover shadow-2 my-3  mx-0 transition-all duration-300 filter brightness-100 hover:brightness-110 "/>
                                 <p
-                                    [routerLink]="['/default/news', new.id]"
+                                    [routerLink]="['/news', new.id]"
                                     class="cursor-pointer text-lg font-bold text-justify text-gray-900 dark:text-white"
                                 >{{new.title}}</p>
 								<div class="mb-3 truncate-three-lines">{{new.subTitle}}</div>

@@ -44,14 +44,14 @@
                                 <div class="flex flex-row gap-3 cursor-pointer" [ngClass]="{'border-top-1 surface-border': !first}">
                                     <div class="basis-1/3 w-10rem mt-4 relative">
                                         <img
-                                            [routerLink]="['/default/news', new.id]"    
+                                            [routerLink]="['/news', new.id]"    
                                             class="block mx-auto border-round h-full w-full shadow-3"
                                             [src]="new.image[0]"
                                             [alt]="new.title"
                                             style="object-fit: cover;" />
                                     </div>
                                     <div class="flex flex-row justify-content-between align-items-center flex-1 gap-4">
-                                        <div [routerLink]="['/default/news', new.id]"
+                                        <div [routerLink]="['/news', new.id]"
                                             class="text-lg font-medium text-900">{{ new.title }}</div>
                                     </div>
                                 </div>
