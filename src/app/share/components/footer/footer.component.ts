@@ -8,4 +8,8 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent {
   constructor(public router: Router) { }
+
+  openLink(link: string): void {
+    window.open(`${link}`, '_blank');
+  }
 }

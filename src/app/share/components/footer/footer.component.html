@@ -1,35 +1,50 @@
 <!-- FOOTER  -->
 
-<div class="bg-white border-t-2 w-full py-4 px-4">
+<div class="bg-[#181821] border-t-2 w-full py-4 px-4">
     <div class="grid justify-content-between">
-        <div class="col-12 md:col-2">
+        <div class="col-12 md:col-5">
             <a (click)="router.navigate(['/'], {fragment: 'home'})"
-                class="flex flex-wrap align-items-center justify-content-center md:justify-content-start md:mb-0 mb-3 cursor-pointer">
-                <h4 class="font-medium text-3xl text-900">Thế giới An Lạc</h4>
+                class="flex flex-wrap align-items-center justify-content-start mb-0 cursor-pointer">
+                <h4 class="font-medium text-3xl text-white">Thế giới An Lạc</h4>
             </a>
+            <div>
+                <p class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb]">Điện thoại:
+                    <a href="tel:0776.135.135" class="text-[#a9b3bb] hover:text-white">0776 135 135</a>
+                </p>
+                <p class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb]">Điện thoại:
+                    <a href="tel:0708.936.485" class="text-[#a9b3bb] hover:text-white">0708 936 485 (Kinh Doanh)</a>
+                </p>
+                <p href="mailto:thegioianlac.co@gmail.com" class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb]">Email:
+                    <a href="mailto:thegioianlac.co@gmail.com" class="text-[#a9b3bb] hover:text-white">
+                        thegioianlac.co&#64;gmail.com
+                    </a>
+                </p>
+                <p class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb]">Số 1 Phan Văn Tình, Thị Trấn Thủ Thừa <br />Huyện Thủ Thừa, Tỉnh Long
+                    An</p>
+            </div>
         </div>
 
         <div class="col-12 md:col-5 lg:col-5">
-            <div class="grid text-center md:text-left">
+            <div class="grid text-left">
                 <div class="col-12 md:col-4">
-                    <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Giới thiệu</h4>
-                    <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chúng tôi</a>
-                    <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Tin tức</a>
+                    <h4 class="font-medium text-2xl line-height-3 mb-3 text-white">Giới thiệu</h4>
+                    <a (click)="router.navigate(['/'], {fragment: 'home'})" class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb] hover:text-white">Chúng tôi</a>
+                    <a (click)="router.navigate(['/news'])" class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb] hover:text-white">Tin tức</a>
                 </div>
 
                 <div class="col-12 md:col-4 mt-4 md:mt-0">
-                    <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Cộng đồng</h4>
-                    <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Facebook</a>
-                    <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Zalo</a>
-                    <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">FAQ</a>
-                    <a class="line-height-3 text-xl block cursor-pointer text-700">Bài viết</a>
+                    <h4 class="font-medium text-2xl line-height-3 mb-3 text-white">Cộng đồng</h4>
+                    <a (click)="openLink('https://www.facebook.com/profile.php?id=61557669076543')" class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb] hover:text-white">Facebook</a>
+                    <a class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb] hover:text-white">Zalo</a>
+                    <a class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb] hover:text-white">FAQ</a>
+                    <a (click)="router.navigate(['/news'])" class="line-height-3 text-md block cursor-pointer text-[#a9b3bb] hover:text-white">Bài viết</a>
                 </div>
 
                 <div class="col-12 md:col-4 mt-4 md:mt-0">
-                    <h4 class="font-medium text-2xl line-height-3 mb-3 text-900">Chính sách</h4>
-                    <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách thương hiệu</a>
-                    <a class="line-height-3 text-xl block cursor-pointer mb-2 text-700">Chính sách bảo mật</a>
-                    <a class="line-height-3 text-xl block cursor-pointer text-700">Điều khoản dịch vụ</a>
+                    <h4 class="font-medium text-2xl line-height-3 mb-3 text-white">Chính sách</h4>
+                    <a class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb] hover:text-white">Chính sách thương hiệu</a>
+                    <a class="line-height-3 text-md block cursor-pointer mb-2 text-[#a9b3bb] hover:text-white">Chính sách bảo mật</a>
+                    <a class="line-height-3 text-md block cursor-pointer text-[#a9b3bb] hover:text-white">Điều khoản dịch vụ</a>
                 </div>
             </div>
         </div>

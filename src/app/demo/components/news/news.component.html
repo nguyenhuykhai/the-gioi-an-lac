@@ -2,14 +2,13 @@
     <div class="body-container">
         <p-blockUI [blocked]="blockedUI"><p-progressSpinner></p-progressSpinner></p-blockUI>
         <section class="bg-white">
-            <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-0 relative">
+            <div class="py-8 px-4 mx-auto max-w-screen-xl text-left lg:py-16 z-0 relative">
                 <h1
                     class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl">
-                    Tin tức
+                    Tin tức nổi bật
                 </h1>
-                <div class="text-xl text-gray-500 italic font-semibold text-center">
-                    <p>"Cập nhật tin tức và theo dõi sức khỏe</p>
-                    <p>Lợi ích kép cho cuộc sống"
+                <div class="text-xl text-gray-500 italic font-semibold text-left">
+                    <p>"Tổng hợp các tin tức chia sẻ về kinh nghiệm chăm sóc sức khỏe và trồng cây thông minh"
                     </p>
                 </div>
             </div>
@@ -18,23 +17,70 @@
         <!-- TIN TỨC ZONE -->
         <p-dataView #dv [value]="news" filterBy="title" layout="grid">
             <ng-template let-news pTemplate="gridItem">
-                <div class="grid grid-nogutter bg-[#f9fafb]">
-                    <div class="col-12 md:col-4" *ngFor="let new of news">
-                        <div class="card m-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-                            style="height: 30rem;">
-                            <div class="flex flex-column align-items-center text-center mb-3">
-                                <img
-                                    [routerLink]="['/news', new.id]"
-                                    [src]="new.image[0]"
-                                    [alt]="new.title"
-                                    class="cursor-pointer w-9 h-52 object-cover shadow-2 my-3  mx-0 transition-all duration-300 filter brightness-100 hover:brightness-110 " />
-                                <p [routerLink]="['/news', new.id]"
-                                    class="cursor-pointer text-lg font-bold text-justify text-gray-900 dark:text-white">
-                                    {{new.title}}</p>
-                                <div class="mb-3 truncate-three-lines">{{new.subTitle}}</div>
+                <div class="grid grid-nogutter">
+
+                    <div class="col-12 md:col-8">
+                        <div *ngFor="let new of news" class="max-w-full p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                            <div class="grid grid-row-2 gap-3">
+
+                                <!-- Image display with mobile screen -->
+                                <div class="col-12 md:hidden mx-auto">
+                                    <img [routerLink]="['/news', new.id]" [src]="new.image[0]" [alt]="new.title"
+                                    class="cursor-pointer object-cover shadow-2 rounded-lg" style="height: 10rem; width: 100%;" />
+                                </div>
+
+                                <!-- Conten screen -->
+                                <div class="md:col-7 pb-0">
+                                    <a [routerLink]="['/news', new.id]">
+                                        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">{{new.title}}</h5>
+                                    </a>
+                                    <p class="mb-3 font-normal text-gray-500 dark:text-gray-400 truncate-three-lines">{{new.subTitle}}</p>
+                                    <a [routerLink]="['/news', new.id]" class="mb-5 w-full inline-flex font-medium items-center text-blue-600 hover:underline">
+                                        Xem thêm
+                                        <svg class="w-1 h-3 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 18 18">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
+                                        </svg>
+                                    </a>
+
+                                    <!-- Content's tag -->
+                                    <div class="px-3 grid grid-row-4">
+                                        <div *ngFor="let tag of new.tags" class="pb-3">
+                                            <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-4 py-2 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                                                {{tag}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Image display with web screen -->
+                                <div class="hidden md:block md:col-4 mx-auto">
+                                    <img [routerLink]="['/news', new.id]" [src]="new.image[0]" [alt]="new.title"
+                                    class="cursor-pointer object-cover shadow-2 rounded-lg" style="height: 10rem; width: 100%;" />
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12 md:col-4">
+                        <div class="max-w-full p-4">
+                            <h5 class="mb-5 text-md font-semibold tracking-tight text-gray-600">Các chủ đề được đề xuất</h5>
+
+                            <div class="px-3 grid grid-row-4">
+                                <div *ngFor="let tag of tagsAray" class="pb-3">
+                                    <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-4 py-2 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                                        {{tag}}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="max-w-full p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                                
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </ng-template>
         </p-dataView>
