@@ -95,7 +95,7 @@ export class HeaderComponent {
       {
         label: 'Liên hệ',
         icon: 'pi pi-briefcase',
-        route: '/'
+        route: '/contact'
       },
     ];
   }

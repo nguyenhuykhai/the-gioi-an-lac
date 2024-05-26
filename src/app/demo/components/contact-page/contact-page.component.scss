@@ -1,0 +1,55 @@
+:host ::ng-deep {
+    .p-ripple {
+        color: white;
+    }
+}
+
+.truncate-three-lines {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+    line-height: 1.5rem;
+    text-align: justify;
+}
+
+@media screen and (min-width: 1960px) {
+    .thumbnail-container {
+        width: 90%;
+        .thumbnail {
+            height: 35rem;
+            object-fit: cover;
+        }
+    }
+    .card {
+        width: 24rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .thumbnail-container {
+        width: 90%;
+        .thumbnail {
+            height: 35rem;
+            object-fit: cover;
+        }
+    }
+    .card {
+        width: 24rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .thumbnail-container {
+        width: 100%;
+        .thumbnail {
+            height: 11rem;
+            object-fit: fill;
+        }
+    }
+    .card {
+        width: 100%;
+    }
+}
