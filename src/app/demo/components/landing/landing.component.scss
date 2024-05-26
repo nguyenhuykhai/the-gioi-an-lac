@@ -1,3 +1,9 @@
+:host ::ng-deep {
+    .p-ripple {
+        color: white;
+    }
+}
+
 .truncate-three-lines {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -7,7 +13,7 @@
     max-height: 4.5em;
     line-height: 1.5rem;
     text-align: justify;
-  }
+}
 
 @media screen and (min-width: 1960px) {
     .embed-video {
@@ -16,6 +22,13 @@
         .video {
             width: 735px;
             height: 400px;
+        }
+    }
+    .thumbnail-container {
+        width: 80%;
+        .thumbnail {
+            height: 35rem;
+            object-fit: cover;
         }
     }
 }
@@ -29,10 +42,24 @@
             height: 315px;
         }
     }
+    .thumbnail-container {
+        width: 80%;
+        .thumbnail {
+            height: 35rem;
+            object-fit: cover;
+        }
+    }
 }
 
 @media (max-width: 991px) {
     .embed-video {
         display: none;
+    }
+    .thumbnail-container {
+        width: 100%;
+        .thumbnail {
+            height: 11rem;
+            object-fit: fill;
+        }
     }
 }

@@ -13,6 +13,7 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 export class NewsComponent {
   // Display value for Landing Page
   news: News[] | undefined;
+  tagsAray: string[];
 
   // Behavior value for Landing Page
   public blockedUI: boolean = false;
@@ -33,6 +34,9 @@ export class NewsComponent {
   ngOnInit() {
     this.blockedUI = true;
     this.initHighLighNews();
+    this.tagsAray = [
+      "sức khỏe", "chăm sóc", "nitrat", "thực phẩm", "độc hại", "dinh dưỡng"
+    ]
   }
 
   initHighLighNews() {

@@ -18,13 +18,10 @@ import { Subscription } from 'rxjs';
     styleUrl: './landing.component.scss',
 })
 export class LandingComponent {
-
+    public dataBanner: any[] = [];
     banners: any[] | undefined;
-
     images: any[] | undefined;
-
     images2: any[] | undefined;
-
     blogs: Blog[] | undefined;
 
     // Display value for Landing Page
@@ -54,13 +51,26 @@ export class LandingComponent {
         this.photoService.getLandingImages().then((images) => (this.images = images));
         this.photoService.getImages().then((banners) => (this.banners = banners));
         this.initHighLighNews();
+        // Lấy danh sách banner fake data
+    this.dataBanner = [
+        {
+          id: '1',
+          image:
+            'assets/demo/images/landing/thumbnail.png',
+  
+          title: 'Học từ những chuyên gia',
+          description: 'Học từ những chuyên gia hàng đầu',
+        },
+      ];
     }
+    
 
     initHighLighNews() {
         const newsSub$ = this.newsService.getAllNews().subscribe(
             (res: any) => {
                 if (res && res.length > 0) {
-                    this.news = res;
+                    // Get three item to display on Landing Page
+                    this.news = res.slice(0, 3);
                     this.blockedUI = false;
                 } else {
                     // Handle error here

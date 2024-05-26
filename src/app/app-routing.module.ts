@@ -15,7 +15,8 @@ import { DefaultLayoutComponent } from "./share/layout/default-layout/default-la
                     { path: 'dealers', loadChildren: () => import('./demo/components/dealer-system/dealer-system.module').then(m => m.DealerSystemModule)},
                     { path: 'price', loadChildren: () => import('./demo/components/price/price.module').then(m => m.PriceModule)},
                     { path: 'news', loadChildren: () => import('./demo/components/news/news.module').then(m => m.NewsModule) },
-                    { path: 'news/:id', loadChildren: () => import('./demo/components/news-detail/news-detail.module').then(m => m.NewsDetailModule)}
+                    { path: 'news/:id', loadChildren: () => import('./demo/components/news-detail/news-detail.module').then(m => m.NewsDetailModule)},
+                    { path: 'contact', loadChildren: () => import('./demo/components/contact-page/contact-page.module').then(m => m.ContactPageModule) },
                 ]
             },
             { path: 'notfound', component: NotfoundComponent },

@@ -9,4 +9,8 @@ import { Price } from 'src/app/demo/api/global';
 export class PriceItemComponent {
   // Get data from parent component
   @Input() price!: Price;
+
+  openLink(link: string): void {
+    window.open(`${link}`, '_blank');
+  }
 }
