@@ -14,6 +14,7 @@ import { PhotoService } from './demo/service/photo.service';
 import { BlogService, PriceService } from './demo/service';
 import { DefaultLayoutModule } from './share/layout/default-layout/default-layout.module';
 import { DealerService } from './demo/service/dealer.service';
+import { AdminComponent } from './demo/components/admin/admin.component';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],

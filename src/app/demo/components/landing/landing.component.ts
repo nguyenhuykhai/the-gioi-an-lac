@@ -52,16 +52,24 @@ export class LandingComponent {
         this.photoService.getImages().then((banners) => (this.banners = banners));
         this.initHighLighNews();
         // Lấy danh sách banner fake data
-    this.dataBanner = [
-        {
-          id: '1',
-          image:
-            'assets/demo/images/landing/thumbnail.png',
-  
-          title: 'Học từ những chuyên gia',
-          description: 'Học từ những chuyên gia hàng đầu',
-        },
-      ];
+        this.dataBanner = [
+            {
+                id: '1',
+                image:
+                    'assets/demo/images/landing/thumbnail.png',
+
+                title: 'Học từ những chuyên gia',
+                description: 'Học từ những chuyên gia hàng đầu',
+            },
+            {
+                id: '2',
+                image:
+                    'assets/demo/images/landing/thumbnail1.png',
+
+                title: 'Học từ những chuyên gia',
+                description: 'Học từ những chuyên gia hàng đầu',
+            }
+        ];
     }
     
 

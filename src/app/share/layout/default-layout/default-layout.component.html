@@ -1,5 +1,10 @@
 <div class="surface-0 surface-0 landing-wrapper overflow-hidden">
-    <app-header></app-header>
+    <ng-container *ngIf="isLogged; else unAuthen">
+        <app-header-admin></app-header-admin>
+    </ng-container>
+    <ng-template #unAuthen>
+        <app-header></app-header>
+    </ng-template>
     <app-contact class="contact"></app-contact>
     <router-outlet></router-outlet>
     <app-footer></app-footer>

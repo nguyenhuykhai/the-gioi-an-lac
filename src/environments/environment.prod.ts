@@ -3,4 +3,8 @@ export const environment = {
   production: false,
   // baseUrl: 'http://localhost:4040',
   baseUrl: 'https://66509654ec9b4a4a6032a082.mockapi.io/api/the-gioi-an-lac',
+
+  // Setting authenticate for admin
+  username: 'admin',
+  password: 'admin@123'
 };
