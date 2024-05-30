@@ -1,0 +1,38 @@
+
+:host ::ng-deep {
+    .p-datatable-gridlines{
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    }
+}
+
+
+.container {
+    max-width: 100%;
+    margin-bottom: 2%;
+    .body-container {
+        height: 100%;
+        padding: 0% 5%;
+        margin: auto;
+        .truncate-three-lines {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 4.5em;
+            line-height: 1.5rem;
+            text-align: justify;
+          }
+    }
+    .cursor {
+        cursor: pointer;
+    }
+    .group-thumbnail {
+        text-align: -webkit-center !important;
+    
+        .thumbnail {
+            width: 10rem;
+            border-radius: 1rem;
+        }
+    }
+}

@@ -25,6 +25,13 @@ import { MoneyPipe } from '../money.pipe';
 import { BlockUIModule } from 'primeng/blockui';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
+import { ToolbarModule } from 'primeng/toolbar';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ChipModule } from 'primeng/chip';
+import { DialogModule } from 'primeng/dialog';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   declarations: [MoneyPipe],
@@ -53,7 +60,16 @@ import { ToastModule } from 'primeng/toast';
     RadioButtonModule,
     BlockUIModule,
     ProgressSpinnerModule,
-    ToastModule
+    ToastModule,
+    TableModule,
+    CommonModule,
+    FormsModule,
+    TooltipModule,
+    ToolbarModule,
+    CheckboxModule,
+    ChipModule,
+    DialogModule,
+    MultiSelectModule
   ],
   exports: [
     DividerModule,
@@ -80,7 +96,14 @@ import { ToastModule } from 'primeng/toast';
     MoneyPipe,
     BlockUIModule,
     ProgressSpinnerModule,
-    ToastModule
+    ToastModule,
+    TableModule,
+    TooltipModule,
+    ToolbarModule,
+    CheckboxModule,
+    ChipModule,
+    DialogModule,
+    MultiSelectModule
   ]
 })
 export class ShareModule { }
