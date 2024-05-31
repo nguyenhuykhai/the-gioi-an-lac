@@ -6,10 +6,11 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ContactComponent } from '../../components/contact/contact.component';
 import { HeaderComponent } from '../../components/header/header.component';
+import { HeaderAdminComponent } from '../../components/header-admin/header-admin.component';
 
 
 @NgModule({
-  declarations: [DefaultLayoutComponent, HeaderComponent ,FooterComponent, ContactComponent],
+  declarations: [DefaultLayoutComponent, HeaderComponent ,FooterComponent, ContactComponent, HeaderAdminComponent],
   imports: [
     CommonModule,
     ShareModule,

@@ -15,6 +15,22 @@ import { BlogService, PriceService } from './demo/service';
 import { DefaultLayoutModule } from './share/layout/default-layout/default-layout.module';
 import { DealerService } from './demo/service/dealer.service';
 
+// Setting Firebase Storage
+// import { FirebaseOptions } from 'firebase/app';
+// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+// import { getStorage, provideStorage } from '@angular/fire/storage';
+// import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+// import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
+// export const firebaseConfig: FirebaseOptions = {
+//     apiKey: 'AIzaSyCrH3nRPoIYgBtcCMdFwtu4IgayGz5EXps',
+//     authDomain: 'unicourse-f4020.firebaseapp.com',
+//     projectId: 'unicourse-f4020',
+//     storageBucket: 'unicourse-f4020.appspot.com',
+//     messagingSenderId: '571256265329',
+//     appId: '1:571256265329:web:1390beeaed0b4e767819d0',
+// };
+
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
     imports: [AppRoutingModule, AppLayoutModule, DefaultLayoutModule],

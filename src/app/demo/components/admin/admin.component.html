@@ -1,0 +1,162 @@
+<div class="container bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
+    <div class="body-container">
+        <p-blockUI [blocked]="blockedUI"><p-progressSpinner></p-progressSpinner></p-blockUI>
+        <p-toast></p-toast>
+
+        <h5>Danh Sách Bài Viết</h5>
+
+        <!-- LIST COURSE ZONE -->
+        <p-table #dt1 [value]="news" dataKey="id" [rows]="10" [loading]="loading" [rowHover]="true"
+            styleClass="p-datatable-gridlines" [paginator]="true" [globalFilterFields]="[
+            'title',
+            'subTitle',
+            'category',
+            'createDate'
+        ]" responsiveLayout="scroll">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-between flex-column sm:flex-row">
+                    <button (click)="clear(dt1)" type="button"
+                        class="h-10 w-md text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-4 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <i class="pi pi-filter-slash mr-2"></i>
+                        Clear
+                    </button>
+                    
+                    <!-- Search input -->
+                    <form class="max-w-lg mb-4">
+                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Tìm
+                            kiếm</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-10 h-6 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                </svg>
+                            </div>
+                            <input #filter type="text" id="default-search" (change)="onGlobalFilter(dt1, $event)"
+                                class="block w-full pl-6 p-3 text-md text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                                placeholder="Tìm kiếm bài viết..." required />
+                        </div>
+                    </form>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>STT</th>
+                    <th style="min-width: 8rem">
+                        <div class="w-full text-center">
+                            Tiêu đề
+                        </div>
+                    </th>
+                    <th style="min-width: 8rem">
+                        <div class="w-full text-center">
+                            Hình ảnh
+                        </div>
+                    </th>
+                    <th style="min-width: 10rem">
+                        <div class="w-full text-center">
+                            Mô tả
+                        </div>
+                    </th>
+                    <th pSortableColumn="createDate" style="min-width: 10rem">
+                        <div class="flex justify-content-between align-items-center">
+                            Ngày đăng
+                            <p-sortIcon field="createDate" />
+                        </div>
+                    </th>
+                    <th style="min-width: 10rem">
+                        <div class="w-full text-center">
+                            Phân loại
+                        </div>
+                    </th>
+                    <th pSortableColumn="display" style="min-width: 8rem">
+                        <div class="flex justify-content-between align-items-center">
+                            Hiển thị
+                            <p-sortIcon field="display" />
+                        </div>
+                    </th>
+                    <th pSortableColumn="highlight" style="min-width: 8rem">
+                        <div class="flex justify-content-between align-items-center">
+                            Nổi bật
+                            <p-sortIcon field="highlight" />
+                        </div>
+                    </th>
+                    <th style="min-width: 10rem">Chức năng</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-new let-i="rowIndex">
+                <tr>
+                    <td class="text-center">{{ i + 1 }}</td>
+                    <td class="cursor">
+                        <p [pTooltip]="new.title" class="cursor-pointer truncate-three-lines">
+                            {{ new.title }}
+                        </p>
+                    </td>
+                    <td>
+                        <div *ngIf="new.image" class="group-thumbnail">
+                            <img height="80" [src]="new.image[0]" [class]="'thumbnail flag flag-' + new.title" />
+                        </div>
+                        <div *ngIf="!new.image" class="group-thumbnail">
+                            <img src="assets/layout/images/default-blog.png"
+                                [class]="'thumbnail flag flag-' + new.title" />
+                        </div>
+                    </td>
+                    <td class="cursor">
+                        <span [pTooltip]="new.subTitle" class="cursor-pointer image-text ml-2 truncate-three-lines">
+                            {{ new.subTitle }}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="text-center items-center justify-center">{{ new.createDate | date : "dd/MM/yyyy" }}</span>
+                    </td>
+                    <td class="text-center items-center justify-center">
+                        <div *ngFor="let item of new.category" class="mb-2">
+                            <span style="background: #32a852; color: white; text-align: center;"
+                                [class]="'customer-badge status-approved'">
+                                {{ item }}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="text-center items-center justify-center">
+                        <p-checkbox [(ngModel)]="new.display" [binary]="true" inputId="binary" />
+                    </td>
+                    <td class="text-center items-center justify-center">
+                        <p-checkbox [(ngModel)]="new.highlight" [binary]="true" inputId="binary" />
+                    </td>
+                    <td>
+                        <button pTooltip="Chỉnh sửa" type="button" (click)="displayEditNewsDialog(new)"
+                            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                            <i class="pi pi-pencil"></i>
+                        </button>
+                        <button pTooltip="Xóa" type="button"
+                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
+                            <i class="pi pi-trash"></i>
+                        </button>
+                        <!-- <button pButton pRipple type="button" icon="pi pi-pencil"
+                                class="p-button-rounded p-button-success mr-2" routerLink="/"></button>
+                            <button pButton type="button" pRipple icon="pi pi-trash"
+                                class="p-button-rounded p-button-warning"></button> -->
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="8">Không có dữ liệu bài viết</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="loadingbody">
+                <tr>
+                    <td colspan="8">
+                        Đang tải dữ liệu bài viết...
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <!-- EDIT DIALOG -->
+        <ng-container *ngIf="selectedNews !== undefined">
+            <app-edit-news-dialog [display]="displayDialog" [news]="selectedNews" (newsEmitter)="updateNews($event)" (onHide)="onHideDialog($event)"></app-edit-news-dialog>
+        </ng-container>
+    </div>
+</div>

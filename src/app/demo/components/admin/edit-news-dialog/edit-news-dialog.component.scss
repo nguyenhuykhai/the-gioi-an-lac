@@ -1,0 +1,19 @@
+:host ::ng-deep {
+    @media screen and (min-width: 1960px) {
+        .p-dialog {
+            width: 50%;
+        }
+    }
+    
+    @media (min-width: 992px) {
+        .p-dialog {
+            width: 50%;
+        }
+    }
+    
+    @media (max-width: 991px) {
+        .p-dialog {
+            width: 100%;
+        }
+    }
+}

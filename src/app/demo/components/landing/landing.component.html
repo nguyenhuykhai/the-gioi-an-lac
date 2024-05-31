@@ -6,7 +6,7 @@
 
         <div class="thumbnail-container m-auto mt-4">
             <p-carousel class="col-span-8 slide-banner" [value]="this.dataBanner" [numVisible]="1" [numScroll]="1"
-                [circular]="false" [autoplayInterval]="7000">
+                [circular]="true" [autoplayInterval]="7000">
                 <ng-template let-product pTemplate="item">
                     <img src="{{ product.image }}" [alt]="product.name" class="thumbnail w-full p-0 rounded-lg" />
                 </ng-template>

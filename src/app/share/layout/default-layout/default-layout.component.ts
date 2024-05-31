@@ -7,5 +7,9 @@ import { Router } from '@angular/router';
   styleUrl: './default-layout.component.scss'
 })
 export class DefaultLayoutComponent {
-  constructor(public router: Router) {}
+  isLogged: boolean;
+
+  constructor(public router: Router) {
+    this.isLogged = localStorage.getItem('isLogged') === 'true';
+  }
 }

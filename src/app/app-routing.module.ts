@@ -17,10 +17,12 @@ import { DefaultLayoutComponent } from "./share/layout/default-layout/default-la
                     { path: 'news', loadChildren: () => import('./demo/components/news/news.module').then(m => m.NewsModule) },
                     { path: 'news/:id', loadChildren: () => import('./demo/components/news-detail/news-detail.module').then(m => m.NewsDetailModule)},
                     { path: 'contact', loadChildren: () => import('./demo/components/contact-page/contact-page.module').then(m => m.ContactPageModule) },
+                    { path: 'admin', loadChildren: () => import('./demo/components/admin/admin.module').then(m => m.AdminModule)}
                 ]
             },
+            { path: 'users', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule)},
             { path: 'notfound', component: NotfoundComponent },
-            { path: '**', redirectTo: '/notfound' },
+            { path: '**', redirectTo: '/' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
     ],
     exports: [RouterModule]

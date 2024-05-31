@@ -1,0 +1,68 @@
+:host ::ng-deep {
+    .p-menuitem-link {
+      color: #111827;
+    }
+    .p-menubar {
+        background-color: white;
+    }
+    .p-element {
+        color: black
+    }
+    .p-icon-wrapper{
+        color: black
+    }
+    @media (max-width: 991px) {
+        .p-menubar-end {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+.group-logo {
+    width: 20rem;
+}
+
+.banner {
+    text-align: -webkit-center;
+}
+
+.header-navbar {
+    .contact-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 2rem;
+    }
+}
+
+@media screen and (min-width: 1960px) {
+    .web {
+        display: flex;
+    }
+    .mobile {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .web {
+        display: flex;
+    }
+    .mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 991px) {
+    .web {
+        display: none;
+    }
+    .logo-web {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+}
