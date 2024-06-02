@@ -14,12 +14,10 @@
         <span class="text-xl text-gray-900 font-bold block my-2">Cập nhật bài viết của bạn</span>
 
         <div class="flex flex-column gap-3 mb-3">
-            <!-- <p-button (click)="showDialogUploadThumbnail()" label="Cập nhật ảnh khóa học" severity="info" /> -->
-            <!-- <p-image 
-            [src]="'assets/demo/images//' + newNews.image[0]"
-            alt="Image"
-            width="250" /> -->
-            <img class="block xl:block drop-shadow-lg border-round h-40 w-40 object-cover" [src]="newNews.image[0]" [alt]="newNews.title" />
+            <p-fileUpload #fileUploader mode="basic" [customUpload]="true" (uploadHandler)="selectFile($event, fileUploader)"
+              chooseLabel="Cập nhật ảnh bài viết" chooseIcon="pi pi-upload" accept="image/*" [multiple]="false">
+            </p-fileUpload>
+            <img class="block xl:block drop-shadow-lg border-round h-40 w-40 object-cover" [src]="imageUrl" [alt]="newNews.title" />
         </div>
 
         <!-- NEWS TITLE -->
@@ -31,12 +29,12 @@
         <!-- NEWS CATEGORY -->
         <div class="flex flex-column gap-3 mb-5">
             <label for="category" class="font-semibold text-gray-900 w-full">Phân loại</label>
-            <p-chip *ngFor="let item of news.category" [label]="item" [removable]="true" />
+            <p-multiSelect [options]="originCategory" [(ngModel)]="selectedCategory" optionLabel="name" placeholder="Chọn phân loại" />
             <div class="flex flex-col md:flex-row justify-content-between">
                 <input pInputText  [(ngModel)]="newCategory" type="text" id="newCategory" class="basis-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Thêm phân loại" required />
-                <button (click)="cancelSubmit()" type="button"
+                <button (click)="addNewCategory()" type="button"
                     class="mt-2 md:mt-0 h-10 w-md text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-content-center dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                    Thêm phân loại
+                    Thêm phân loại mới
                 </button>
             </div>
         </div>
@@ -52,23 +50,28 @@
         </div>
 
         <!-- NEWS DISPLAY -->
-        <div class="flex flex-column gap-3 mb-5">
-            <label for="display" class="font-semibold text-gray-900 w-full">Hiển thị</label>
-            <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                    <div class="flex items-center ps-3">
-                        <input id="horizontal-list-radio-license" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hiển thị bài viết</label>
-                    </div>
-                </li>
-                <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                    <div class="flex items-center ps-3">
-                        <input id="horizontal-list-radio-id" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ẩn bài viết</label>
-                    </div>
-                </li>
-            </ul>
-        </div>
+        <ul
+            class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                <div class="flex items-center ps-3">
+                    <input id="horizontal-list-radio-license-display-1" type="radio" [value]="true" name="list-radio-1"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
+                        [(ngModel)]="newNews.display">
+                    <label for="horizontal-list-radio-license-display-1"
+                        class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hiển thị bài viết</label>
+                </div>
+            </li>
+            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                <div class="flex items-center ps-3">
+                    <input id="horizontal-list-radio-id-display-2" type="radio" [value]="false" name="list-radio-1"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
+                        [(ngModel)]="newNews.display">
+                    <label for="horizontal-list-radio-id-display-2"
+                        class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ẩn bài viết</label>
+                </div>
+            </li>
+        </ul>
+          
 
         <!-- NEWS HIGHLIGHT -->
         <div class="flex flex-column gap-3 mb-5">
@@ -76,14 +79,14 @@
             <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                     <div class="flex items-center ps-3">
-                        <input id="horizontal-list-radio-license-2" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="horizontal-list-radio-license-2" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bài viết nổi bật</label>
+                        <input id="horizontal-list-radio-license-hightlight-1" type="radio" [value]="true" [(ngModel)]="newNews.highlight" name="list-radio-2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="horizontal-list-radio-license-hightlight-1" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bài viết nổi bật</label>
                     </div>
                 </li>
                 <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                     <div class="flex items-center ps-3">
-                        <input id="horizontal-list-radio-id-2" type="radio" value="" name="list-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
-                        <label for="horizontal-list-radio-id-2" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bài viết thường</label>
+                        <input id="horizontal-list-radio-id-hightlight-2" type="radio" [value]="false" [(ngModel)]="newNews.highlight" name="list-radio-2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
+                        <label for="horizontal-list-radio-id-hightlight-2" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bài viết thường</label>
                     </div>
                 </li>
             </ul>
@@ -105,7 +108,7 @@
         </div>
     </p-dialog>
 
-    <!-- <p-dialog header="Ảnh khóa học" [modal]="true" [(visible)]="visibleThumbnailDialog" [style]="{ width: '40rem' }">
+    <!-- <p-dialog header="Ảnh bài viết" [modal]="true" [(visible)]="visibleThumbnailDialog" [style]="{ width: '40rem' }">
         
         <p-fileUpload [customUpload]="true" (uploadHandler)="selectFile($event)" [multiple]="false" accept="image/*">
             <ng-template pTemplate="content">

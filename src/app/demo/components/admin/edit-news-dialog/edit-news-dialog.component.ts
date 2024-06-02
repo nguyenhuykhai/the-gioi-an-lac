@@ -2,15 +2,15 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Injectable }
 import { AutoCompleteCompleteEvent } from 'primeng/autocomplete';
 import { Subscription } from 'rxjs';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { News, NewsCreate } from 'src/app/core/models';
+import { News, NewsCreate, Category } from 'src/app/core/models';
 
 // Import Storage from Firebase
 import { NewsService, FileUploadService } from 'src/app/core/service';
 import { FileUpload } from 'src/app/core/models';
-
-interface Category {
-  name: string;
-  code: string;
+import { FileUpload as FileUploadPrime } from 'primeng/fileupload';
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
 }
 
 @Component({
@@ -22,6 +22,7 @@ export class EditNewsDialogComponent {
   // Biến value cho NewCourseDialogComponent
   @Input() display: boolean;
   @Input() news: News;
+  @Input() categories: Category[];
   @Output() courseEmitter = new EventEmitter<string>();
   @Output() displayChange = new EventEmitter<boolean>();
 
@@ -32,14 +33,21 @@ export class EditNewsDialogComponent {
   // Biến behavior cho NewCourseDialogComponent
   visible: boolean = false;
   visibleThumbnailDialog: boolean = false;
-  addNewCategoryData: string = '';
+  newCategory: string = '';
   public blockedUI: boolean = false;
 
   // Biến cục bộ cho NewCourseDialogComponent
   private subscriptions: Subscription[] = []
-  dropDownOptions: any[] = [];
   filteredCategory: any[] | undefined;
-  selectedCategory: Category;
+  originCategory: Category[] = [];
+  selectedCategory: Category[];
+
+  // Biến upload file
+  selectedFiles?: File;
+  currentFileUpload?: FileUpload;
+  percentage = 0;
+  imageUrl: string = 'https://primefaces.org/cdn/primeng/images/galleria/galleria10.jpg';
+  alreadyUpload: boolean = false;
 
   constructor(
     private config: PrimeNGConfig,
@@ -62,44 +70,10 @@ export class EditNewsDialogComponent {
   initFormData() {
     this.originalNews = this.news;
     this.newNews = this.news;
-    this.dropDownOptions = [
-      {
-        name: "Chuyên ngành 1",
-        code: "CN1"
-      },
-      {
-        name: "Chuyên ngành 2",
-        code: "CN2"
-      },
-      {
-        name: "Chuyên ngành 3",
-        code: "CN3"
-      },
-      {
-        name: "Chuyên ngành 4",
-        code: "CN4"
-      },
-      {
-        name: "Chuyên ngành 5",
-        code: "CN5"
-      },
-      {
-        name: "Chuyên ngành 6",
-        code: "CN6"
-      },
-      {
-        name: "Chuyên ngành 7",
-        code: "CN7"
-      },
-      {
-        name: "Chuyên ngành 8",
-        code: "CN8"
-      },
-      {
-        name: "Chuyên ngành 9",
-        code: "CN9"
-      }
-    ];
+    this.selectedCategory = this.news.category;
+    this.imageUrl = this.newNews.image[0];
+    this.originCategory = this.categories;
+    
   }
 
   // BEHAVIOR LOGIC ZONE
@@ -113,11 +87,11 @@ export class EditNewsDialogComponent {
   }
 
   addNewCategory() {
-    this.dropDownOptions.push({
-      name: this.addNewCategoryData,
-      code: this.addNewCategoryData
+    this.originCategory.push({
+      name: this.newCategory,
+      code: this.newCategory.toLowerCase().replace(/ /g, '-'),
     });
-    this.addNewCategoryData = '';
+    this.newCategory = '';
   }
 
   // API LOGIC ZONE
@@ -149,20 +123,84 @@ export class EditNewsDialogComponent {
   }
 
   // Auto hiển thị semester gợi ý
-  filterSemester(event: AutoCompleteCompleteEvent) {
-    let filtered: any[] = [];
-    let query = event.query;
+  // filterSemester(event: AutoCompleteCompleteEvent) {
+  //   let filtered: any[] = [];
+  //   let query = event.query;
 
-    for (let i = 0; i < (this.dropDownOptions as any[]).length; i++) {
-      let category = (this.dropDownOptions as any[])[i];
-      if (category.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(category);
-      }
-    }
-    this.filteredCategory = filtered;
-  }
+  //   for (let i = 0; i < (this.dropDownOptions as any[]).length; i++) {
+  //     let category = (this.dropDownOptions as any[])[i];
+  //     if (category.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+  //       filtered.push(category);
+  //     }
+  //   }
+  //   this.filteredCategory = filtered;
+  // }
 
   resetForm() {
     this.newNews = this.originalNews;
+  }
+
+  //UPLOAD FILE LOGIC ZONE
+  showDialogUploadThumbnail() {
+    this.visibleThumbnailDialog = true;
+  }
+
+  selectFile(event: UploadEvent, fileUploader: FileUploadPrime): void {
+    if (!event.files[0]) return;
+    if (this.alreadyUpload) { // Kiểm tra nếu đã upload rồi thì xóa ảnh cũ
+      this.uploadService.deleteFile("/thegioianlac/news", this.currentFileUpload);
+      this.alreadyUpload = false;
+    }
+    this.selectedFiles = event.files[0];
+    this.upload(fileUploader);
+  }
+
+  // Upload này config cho viêc upload ảnh thumbnail của course
+  upload(fileUploader: FileUploadPrime): void {
+    if (!this.selectedFiles) {
+      this.showToast('error', 'Chưa chọn ảnh', 'Vui lòng chọn ảnh trước khi upload');
+      return;
+    }
+
+    const file: File = this.selectedFiles;
+    this.selectedFiles = undefined;
+
+    this.currentFileUpload = new FileUpload(file);
+    let getFileInfo = this.removeFileExtension(`/thegioianlac/news/${this.currentFileUpload.file.name}`);
+    this.currentFileUpload.path = '/thegioianlac/news';
+    this.currentFileUpload.name = getFileInfo.fileName;
+    this.uploadService.pushFileToStorage(this.currentFileUpload.name, this.currentFileUpload.path, this.currentFileUpload).subscribe(
+      response => {
+        if (response.downloadUrl !== '') {
+          this.showToast('success', 'Upload ảnh thành công', 'Ảnh đã được lưu trữ');
+          this.imageUrl = response.downloadUrl;
+          this.alreadyUpload = true;
+          this.visibleThumbnailDialog = false;
+        } else {
+          this.percentage = Math.round(response.percentUpload ?? 0);
+          fileUploader.clear();
+        }
+      },
+      error => {
+        this.showToast('error', 'Upload ảnh thất bại', 'Vui lòng thử lại sau');
+      }
+    );
+  }
+
+  removeFileExtension(filePath): {  fileName: string } {
+    // Extract the directory and file name without the extension
+    const lastIndexOfDot = filePath.lastIndexOf('.');
+    const lastIndexOfSlash = filePath.lastIndexOf('/');
+  
+    // Ensure the dot is part of the file name, not the directory name
+    if (lastIndexOfDot > lastIndexOfSlash) {
+      const filePathWithoutExtension = filePath.substring(0, lastIndexOfDot);
+      const fileNameWithoutExtension = filePath.substring(lastIndexOfSlash + 1, lastIndexOfDot);
+      return { fileName: fileNameWithoutExtension };
+    }
+  
+    // If no valid extension found, return the original path and file name
+    const fileName = filePath.substring(lastIndexOfSlash + 1);
+    return { fileName };
   }
 }

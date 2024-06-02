@@ -87,11 +87,6 @@ export class HeaderAdminComponent {
         route: '/news'
       },
       {
-        label: 'Quản lý',
-        icon: 'pi pi-megaphone',
-        route: '/admin'
-      },
-      {
         label: 'Bảng giá',
         icon: 'pi pi-tag',
         route: '/price'
@@ -101,6 +96,16 @@ export class HeaderAdminComponent {
         icon: 'pi pi-briefcase',
         route: '/contact'
       },
+      {
+        label: 'Quản lý',
+        icon: 'pi pi-megaphone',
+        route: '/admin'
+      },
+      {
+        label: 'Đăng xuất',
+        icon: 'pi pi-sign-out',
+        route: '/logout'
+      }
     ];
   }
 
@@ -109,6 +114,15 @@ export class HeaderAdminComponent {
   }
 
   navigate(route: string, fragment: string): void {
-    this.router.navigate([route], { fragment });
+    if (route === '/logout') {
+      this.signOut();
+    } else {
+      this.router.navigate([route], { fragment });
+    }
+  }
+
+  signOut() {
+    localStorage.removeItem('isLogged');
+    this.router.navigate(['/users/login']);
   }
 }
