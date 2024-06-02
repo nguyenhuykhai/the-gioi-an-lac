@@ -120,5 +120,5 @@
 
 /* Apply the custom font to the body */
 body {
-    font-family: 'BeVietnamPro', sans-serif;
+    font-family: 'BeVietnamPro', sans-serif !important;
 }
