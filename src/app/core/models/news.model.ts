@@ -1,6 +1,7 @@
 export interface News {
     id: string;
-    category: string;
+    category: Category[];
+    originCategory: Category[];
     title: string;
     subTitle: string;
     detail: string;
@@ -9,6 +10,11 @@ export interface News {
     highlight: boolean;
     createDate: Date;
     tags: string[];
+}
+
+export interface Category {
+    name: string;
+    code: string;
 }
 
 export interface NewsCreate {

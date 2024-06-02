@@ -8,7 +8,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { NewsService } from 'src/app/core/service';
 
 // IMPORT INTERFACE
-import { News } from 'src/app/core/models';
+import { Category, News } from 'src/app/core/models';
 import { Subscription } from 'rxjs';
 import { Table } from 'primeng/table';
 
@@ -23,6 +23,7 @@ export class AdminComponent {
   // Display value for Landing Page
   news: News[] | undefined;
   selectedNews: News | undefined;
+  originCategory: Category[] = [];
 
   // Behavior value for Landing Page
   public blockedUI: boolean = false;
@@ -69,6 +70,7 @@ export class AdminComponent {
         if (res && res.length > 0) {
           // Get three item to display on Landing Page
           this.news = res;
+          this.originCategory = res[0].originCategory;
           this.blockedUI = false;
           this.loading = false;
         } else {
@@ -142,8 +144,8 @@ export class AdminComponent {
     this.displayDialog = true;
   }
 
-  onHideDialog(event: any) {
-    this.displayDialog = false;
+  onHideDialog(display: boolean) {
+    this.displayDialog = display;
   }
 
   closeCreateCourseModal(display: boolean) {

@@ -14,30 +14,42 @@ import { PhotoService } from './demo/service/photo.service';
 import { BlogService, PriceService } from './demo/service';
 import { DefaultLayoutModule } from './share/layout/default-layout/default-layout.module';
 import { DealerService } from './demo/service/dealer.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Setting Firebase Storage
-// import { FirebaseOptions } from 'firebase/app';
-// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-// import { getStorage, provideStorage } from '@angular/fire/storage';
-// import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-// import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireModule } from '@angular/fire/compat';
+import { FirebaseOptions } from 'firebase/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
-// export const firebaseConfig: FirebaseOptions = {
-//     apiKey: 'AIzaSyCrH3nRPoIYgBtcCMdFwtu4IgayGz5EXps',
-//     authDomain: 'unicourse-f4020.firebaseapp.com',
-//     projectId: 'unicourse-f4020',
-//     storageBucket: 'unicourse-f4020.appspot.com',
-//     messagingSenderId: '571256265329',
-//     appId: '1:571256265329:web:1390beeaed0b4e767819d0',
-// };
+export const firebaseConfig: FirebaseOptions = {
+    apiKey: "AIzaSyCPCxdnlURoz1n8TDjQdXY1iprn82K4HLs",
+    authDomain: "nha-trang-ntne.firebaseapp.com",
+    projectId: "nha-trang-ntne",
+    storageBucket: "nha-trang-ntne.appspot.com",
+    messagingSenderId: "422044912492",
+    appId: "1:422044912492:web:2e34eada0c4670e1c0c149",
+    measurementId: "G-KQ4B9SLRN9"
+};
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule, DefaultLayoutModule],
+    imports: [
+        AppRoutingModule,
+        AppLayoutModule,
+        DefaultLayoutModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFireStorageModule,
+        BrowserAnimationsModule,
+    ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, BlogService, DealerService, PriceService
+        PhotoService, ProductService, BlogService, DealerService, PriceService,
+        provideFirebaseApp(() => initializeApp(firebaseConfig)),
+        provideStorage(() => getStorage())
     ],
     bootstrap: [AppComponent],
 })

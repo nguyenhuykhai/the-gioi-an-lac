@@ -34,8 +34,10 @@ export class ServicesPageComponent implements OnInit {
         // Get fragment from router and scroll to element
         this.route.fragment.subscribe(fragment => {
             if (fragment) {
-                this.scrollToElement(fragment);
-            }
+                setTimeout(() => {
+                  this.scrollToElement(fragment);
+                }, 100);
+              }
         });
 
         this.photoService.getLandingImages().then((images) => {

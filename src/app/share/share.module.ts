@@ -32,6 +32,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { ChipModule } from 'primeng/chip';
 import { DialogModule } from 'primeng/dialog';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [MoneyPipe],
@@ -69,7 +70,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     CheckboxModule,
     ChipModule,
     DialogModule,
-    MultiSelectModule
+    MultiSelectModule,
+    FileUploadModule
   ],
   exports: [
     DividerModule,
@@ -103,7 +105,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     CheckboxModule,
     ChipModule,
     DialogModule,
-    MultiSelectModule
+    MultiSelectModule,
+    FileUploadModule
   ]
 })
 export class ShareModule { }

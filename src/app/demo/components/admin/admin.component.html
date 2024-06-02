@@ -113,7 +113,7 @@
                         <div *ngFor="let item of new.category" class="mb-2">
                             <span style="background: #32a852; color: white; text-align: center;"
                                 [class]="'customer-badge status-approved'">
-                                {{ item }}
+                                {{ item.name }}
                             </span>
                         </div>
                     </td>
@@ -155,8 +155,8 @@
         </p-table>
 
         <!-- EDIT DIALOG -->
-        <ng-container *ngIf="selectedNews !== undefined">
-            <app-edit-news-dialog [display]="displayDialog" [news]="selectedNews" (newsEmitter)="updateNews($event)" (onHide)="onHideDialog($event)"></app-edit-news-dialog>
+        <ng-container *ngIf="selectedNews !== undefined && displayDialog">
+            <app-edit-news-dialog [display]="displayDialog" [categories]="originCategory"  [news]="selectedNews" (newsEmitter)="updateNews($event)" (displayChange)="onHideDialog($event)"></app-edit-news-dialog>
         </ng-container>
     </div>
 </div>

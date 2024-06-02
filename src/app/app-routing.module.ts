@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import { DefaultLayoutComponent } from "./share/layout/default-layout/default-layout.component";
+import { loginSystemGuard } from './core/guards/login-system.guard';
 
 @NgModule({
     imports: [
@@ -17,7 +18,7 @@ import { DefaultLayoutComponent } from "./share/layout/default-layout/default-la
                     { path: 'news', loadChildren: () => import('./demo/components/news/news.module').then(m => m.NewsModule) },
                     { path: 'news/:id', loadChildren: () => import('./demo/components/news-detail/news-detail.module').then(m => m.NewsDetailModule)},
                     { path: 'contact', loadChildren: () => import('./demo/components/contact-page/contact-page.module').then(m => m.ContactPageModule) },
-                    { path: 'admin', loadChildren: () => import('./demo/components/admin/admin.module').then(m => m.AdminModule)}
+                    { path: 'admin', canActivateChild: [loginSystemGuard], loadChildren: () => import('./demo/components/admin/admin.module').then(m => m.AdminModule)}
                 ]
             },
             { path: 'users', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule)},
