@@ -33,6 +33,7 @@ import { ChipModule } from 'primeng/chip';
 import { DialogModule } from 'primeng/dialog';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FileUploadModule } from 'primeng/fileupload';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [MoneyPipe],
@@ -71,7 +72,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     ChipModule,
     DialogModule,
     MultiSelectModule,
-    FileUploadModule
+    FileUploadModule,
+    EditorModule
   ],
   exports: [
     DividerModule,
@@ -106,7 +108,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     ChipModule,
     DialogModule,
     MultiSelectModule,
-    FileUploadModule
+    FileUploadModule,
+    EditorModule
   ]
 })
 export class ShareModule { }

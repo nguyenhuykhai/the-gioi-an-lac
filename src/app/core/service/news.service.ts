@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment.prod';
 import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { News } from '../models';
 @Injectable({ providedIn: 'root' })
 export class NewsService {
@@ -28,14 +28,14 @@ export class NewsService {
 
     updateNews(data: News) {
         return this.httpClient
-            .put<any>(`${environment.baseUrl}/news/${data.id}`, data)
+            .put<any>(`${environment.baseUrl}/news/${data.id}`, data, { observe: 'response' })
             .pipe(catchError(this.handleError));
     }
 
     deleteNews(id: string) {
         return this.httpClient
-            .delete<any>(`${environment.baseUrl}/news/${id}`)
-            .pipe(catchError(this.handleError));
+          .delete<any>(`${environment.baseUrl}/news/${id}`, { observe: 'response' })
+          .pipe(catchError(this.handleError));
     }
 
     private handleError(error: any) {

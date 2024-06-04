@@ -1,7 +1,7 @@
 <div class="container bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
     <div class="body-container">
         <p-blockUI [blocked]="blockedUI"><p-progressSpinner></p-progressSpinner></p-blockUI>
-        <p-toast></p-toast>
+        <p-toast key="tst"></p-toast>
 
         <h5>Danh Sách Bài Viết</h5>
 
@@ -118,17 +118,17 @@
                         </div>
                     </td>
                     <td class="text-center items-center justify-center">
-                        <p-checkbox [(ngModel)]="new.display" [binary]="true" inputId="binary" />
+                        <p-checkbox (click)="toggleDisplay(new)" [(ngModel)]="new.display" [binary]="true" inputId="binary" />
                     </td>
                     <td class="text-center items-center justify-center">
-                        <p-checkbox [(ngModel)]="new.highlight" [binary]="true" inputId="binary" />
+                        <p-checkbox (click)="toggleHighlight(new)" [(ngModel)]="new.highlight" [binary]="true" inputId="binary" />
                     </td>
                     <td>
                         <button pTooltip="Chỉnh sửa" type="button" (click)="displayEditNewsDialog(new)"
                             class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
                             <i class="pi pi-pencil"></i>
                         </button>
-                        <button pTooltip="Xóa" type="button"
+                        <button pTooltip="Xóa" type="button" (click)="openDeleteDialog(new)"
                             class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2">
                             <i class="pi pi-trash"></i>
                         </button>
@@ -156,7 +156,40 @@
 
         <!-- EDIT DIALOG -->
         <ng-container *ngIf="selectedNews !== undefined && displayDialog">
-            <app-edit-news-dialog [display]="displayDialog" [categories]="originCategory"  [news]="selectedNews" (newsEmitter)="updateNews($event)" (displayChange)="onHideDialog($event)"></app-edit-news-dialog>
+            <app-edit-news-dialog [display]="displayDialog" [categories]="originCategory"  [news]="selectedNews" (newsEmitter)="updateNewsInEditDialog($event)" (displayChange)="onHideDialog($event)"></app-edit-news-dialog>
         </ng-container>
-    </div>
+
+        <!-- DELETE DIALOG -->
+        <ng-container *ngIf="deleteDialog">     
+                <p-dialog header="Tạo khóa học" [modal]="true" (visibleChange)="closeDeleteDialog()" [(visible)]="deleteDialog" class="modal">
+                    <ng-template pTemplate="header">
+                        <div class="inline-flex align-items-center justify-content-center gap-2">
+                            <span class="font-bold text-gray-900 white-space-nowrap">
+                                Xin chào, Admin
+                            </span>
+                        </div>
+                    </ng-template>
+
+                    <dl class="pt-2 w-full text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
+                        <div class="flex flex-col pb-3">
+                            <dd class="text-lg font-semibold">Bạn muốn xóa bài viết này?</dd>
+                        </div>
+                        <div class="flex flex-col py-3">
+                            <dd class="text-lg">{{selectedNews.title}}</dd>
+                        </div>
+                    </dl>
+                    
+                    <!-- GROUP BUTTON -->
+                    <div class="flex align-items-center gap-3 flex-wrap justify-content-end">
+                        <button (click)="closeDeleteDialog()" type="button"
+                            class="py-2.5 px-5 me-2 mb-2 text-sm font-semibold text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                            Hủy
+                        </button>
+                        <button (click)="deleteNews(selectedNews.id)" type="button"
+                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                            Xóa
+                        </button>
+                    </div>
+                </p-dialog>
+        </ng-container>
 </div>
