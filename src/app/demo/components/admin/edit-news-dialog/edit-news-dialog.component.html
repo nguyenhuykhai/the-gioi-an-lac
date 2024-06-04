@@ -23,15 +23,23 @@
         <!-- NEWS TITLE -->
         <div class="flex flex-column align-items-center gap-3 mb-3">
             <label for="title" class="font-semibold text-gray-900 w-full block dark:text-white">Tiêu đề</label>
-            <input pInputText [(ngModel)]="newNews.title" type="text" id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tiêu đề" required />
+            <input pInputText
+                [(ngModel)]="newNews.title"
+                (ngModelChange)="onDetailNewsChange(newNews.title, 'title')"
+                type="text"
+                id="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Tiêu đề" required />
         </div>
 
         <!-- NEWS CATEGORY -->
-        <div class="flex flex-column gap-3 mb-5">
+        <div class="flex flex-column gap-3 mb-3">
             <label for="category" class="font-semibold text-gray-900 w-full">Phân loại</label>
-            <p-multiSelect [options]="originCategory" [(ngModel)]="selectedCategory" optionLabel="name" placeholder="Chọn phân loại" />
+            <p-multiSelect
+                [options]="originCategory"
+                [(ngModel)]="selectedCategory"
+                (ngModelChange)="onDetailNewsChange(selectedCategory, 'category')"
+                optionLabel="name" placeholder="Chọn phân loại" />
             <div class="flex flex-col md:flex-row justify-content-between">
-                <input pInputText  [(ngModel)]="newCategory" type="text" id="newCategory" class="basis-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Thêm phân loại" required />
+                <input pInputText [(ngModel)]="newCategory" type="text" id="newCategory" class="basis-3/4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Thêm phân loại" required />
                 <button (click)="addNewCategory()" type="button"
                     class="mt-2 md:mt-0 h-10 w-md text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-content-center dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                     Thêm phân loại mới
@@ -40,71 +48,145 @@
         </div>
 
         <!-- NEWS SUBTITLE -->
-        <div class="flex flex-column align-items-center gap-3 mb-5">
+        <div class="flex flex-column align-items-center gap-3 mb-3">
             <label for="subTitle" class="font-semibold text-gray-900 w-full block dark:text-white">Mô tả</label>
             <textarea id="subTitle"
                 rows="4"
                 pInputText
                 [(ngModel)]="newNews.subTitle"
+                (ngModelChange)="onDetailNewsChange(newNews.subTitle, 'subTitle')"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Mô tả của bài viết..."></textarea>
         </div>
 
         <!-- NEWS DISPLAY -->
-        <ul
-            class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                <div class="flex items-center ps-3">
-                    <input id="horizontal-list-radio-license-display-1" type="radio" [value]="true" name="list-radio-1"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
-                        [(ngModel)]="newNews.display">
-                    <label for="horizontal-list-radio-license-display-1"
-                        class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hiển thị bài viết</label>
-                </div>
-            </li>
-            <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-                <div class="flex items-center ps-3">
-                    <input id="horizontal-list-radio-id-display-2" type="radio" [value]="false" name="list-radio-1"
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
-                        [(ngModel)]="newNews.display">
-                    <label for="horizontal-list-radio-id-display-2"
-                        class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ẩn bài viết</label>
-                </div>
-            </li>
-        </ul>
+        <div class="flex flex-column gap-3 mb-3">
+            <label for="highlight" class="font-semibold text-gray-900 w-full">Hiển thị</label>
+            <ul
+                class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <input id="horizontal-list-radio-license-display-1" type="radio" [value]="true" name="list-radio-1"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
+                            [(ngModel)]="newNews.display"
+                            (ngModelChange)="onDetailNewsChange(newNews.display, 'display')">
+                        <label for="horizontal-list-radio-license-display-1"
+                            class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hiển thị bài
+                            viết</label>
+                    </div>
+                </li>
+                <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
+                    <div class="flex items-center ps-3">
+                        <input id="horizontal-list-radio-id-display-2" type="radio" [value]="false" name="list-radio-1"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500"
+                            [(ngModel)]="newNews.display"
+                            (ngModelChange)="onDetailNewsChange(newNews.display, 'display')">
+                        <label for="horizontal-list-radio-id-display-2"
+                            class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Ẩn bài viết</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
           
-
         <!-- NEWS HIGHLIGHT -->
         <div class="flex flex-column gap-3 mb-5">
             <label for="highlight" class="font-semibold text-gray-900 w-full">Nổi bật</label>
             <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                 <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                     <div class="flex items-center ps-3">
-                        <input id="horizontal-list-radio-license-hightlight-1" type="radio" [value]="true" [(ngModel)]="newNews.highlight" name="list-radio-2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
+                        <input
+                            id="horizontal-list-radio-license-hightlight-1"
+                            type="radio" [value]="true"
+                            [(ngModel)]="newNews.highlight"
+                            (ngModelChange)="onDetailNewsChange(newNews.highlight, 'highlight')"
+                            name="list-radio-2"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
                         <label for="horizontal-list-radio-license-hightlight-1" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bài viết nổi bật</label>
                     </div>
                 </li>
                 <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                     <div class="flex items-center ps-3">
-                        <input id="horizontal-list-radio-id-hightlight-2" type="radio" [value]="false" [(ngModel)]="newNews.highlight" name="list-radio-2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
+                        <input
+                            id="horizontal-list-radio-id-hightlight-2"
+                            type="radio"
+                            [value]="false"
+                            [(ngModel)]="newNews.highlight"
+                            (ngModelChange)="onDetailNewsChange(newNews.highlight, 'highlight')"
+                            name="list-radio-2"
+                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:bg-gray-600 dark:border-gray-500">
                         <label for="horizontal-list-radio-id-hightlight-2" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bài viết thường</label>
                     </div>
                 </li>
             </ul>
         </div>
 
+        <!-- Editor -->
+        <div class="field editor">
+            <label for="category" class="font-semibold text-gray-900 w-full">Nội dung</label>
+            <div class="flex flex-row flex align-items-center gap-3 flex-wrap">
+                <button (click)="togglePreview()" type="button"
+                    class="h-10 w-md text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-2">
+                    <ng-container *ngIf="preview === true; else backBtn">
+                        <i class="pi pi-eye-slash mr-2"></i>
+                        Chế độ chỉnh sửa
+                    </ng-container>
+                    <ng-template #backBtn>
+                        <i class="pi pi-eye mr-2"></i>
+                        Chế độ xem trước
+                    </ng-template>
+                </button>
+            </div>
+            <!-- Editor Text -->
+            <div>
+                <ng-container *ngIf="preview === false; else preViewBlog">
+                    <editor
+                        [(ngModel)]="newNews.detail"
+                        name="detail"
+                        (ngModelChange)="onDetailNewsChange(newNews.detail, 'detail')"
+                        apiKey="8oi2m4vzjnoj301r398iggki6v0ukdgpwavrr76kku9cnnpz"
+                        [init]="{
+                            plugins:
+                                'lists link image table code help wordcount'
+                        }"
+                    ></editor>
+                </ng-container>
+                <ng-template #preViewBlog>
+                    <div class="card">
+                        <div
+                            class="w-full h-full"
+                            *ngIf="newNews.detail"
+                            [innerHTML]="sanitizeContent(newNews.detail)"
+                        ></div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+
         <!-- GROUP BUTTON -->
         <div class="flex align-items-center gap-3 flex-wrap justify-content-end">
+            <button (click)="resetForm()" type="button"
+                class="h-10 w-md text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex align-items-center">
+                <i class="pi pi-eraser mr-2"></i>
+                Reset
+            </button>
             <button (click)="cancelSubmit()" type="button"
-                    class="h-10 w-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                    <i class="pi pi-times-circle mr-2"></i>
-                    Hủy
+                class="h-10 w-md text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                <i class="pi pi-times-circle mr-2"></i>
+                Hủy
+            </button>
+            <ng-container *ngIf="disableSubmitBtn; else submitBtn">
+                <button type="button" (click)="showDisableUpdateToast()"
+                    class="h-10 w-md cursor-not-allowed text-white bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-green-600">
+                    <i class="pi pi-save mr-2"></i>
+                    Lưu
                 </button>
-                
-                <button (click)="cancelSubmit()" type="button"
+            </ng-container>
+            <ng-template #submitBtn>
+                <button (click)="updateNews()" type="button"
                     class="h-10 w-md text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                     <i class="pi pi-save mr-2"></i>
                     Lưu
                 </button>
+            </ng-template>
         </div>
     </p-dialog>
 

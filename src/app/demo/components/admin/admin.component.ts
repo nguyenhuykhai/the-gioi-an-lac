@@ -29,7 +29,9 @@ export class AdminComponent {
   public blockedUI: boolean = false;
   loading: boolean = true;
   displayDialog: boolean = false;
+  deleteDialog: boolean = false;
   @ViewChild('filter') filter!: ElementRef;
+
   statuses: any[] = [
     { label: 'Hoạt động', value: true, color: 'approved' },
     { label: 'Tạm dừng', value: false, color: 'rejected' }
@@ -56,7 +58,6 @@ export class AdminComponent {
     this.blockedUI = true;
     this.initNews();
   }
-
   ngOnDestroy() {
     this.subscriptions.forEach((sub) => {
         sub.unsubscribe();
@@ -89,40 +90,58 @@ export class AdminComponent {
 
   // API LOGIC ZONE
   updateNews(event: News) {
+    this.blockedUI = true;
     const newsSub$ = this.newsService.updateNews(event).subscribe(
       (res: any) => {
-        if (res && res.status === 200) {
+        if (res && res.status === 200 && res.body) {
           this.showToast('success', 'Thành công', 'Cập nhật bài viết thành công');
-          this.initNews();
+          this.news[this.news.findIndex((item) => item.id === event.id)] = res.body;
+          this.blockedUI = false;
           this.displayDialog = false;
         } else {
           // Handle error here
           this.showToast('error', 'Lỗi', 'Cập nhật bài viết thất bại')
+          this.blockedUI = false;
+          this.displayDialog = false;
         }
       },
       (error: any) => {
         // Handle error here
         this.showToast('error', 'Lỗi', 'Cập nhật bài viết thất bại')
+        this.blockedUI = false;
+        this.displayDialog = false;
       }
     );
 
     this.subscriptions.push(newsSub$);
   }
 
+  updateNewsInEditDialog(event: News) {
+    this.news[this.news.findIndex((item) => item.id === event.id)] = event;
+  }
+
   deleteNews(id: string) {
+    this.blockedUI = true;
     const newsSub$ = this.newsService.deleteNews(id).subscribe(
       (res: any) => {
+        console.log(res);
         if (res && res.status === 200) {
+          this.blockedUI = false;
           this.showToast('success', 'Thành công', 'Xóa bài viết thành công');
-          this.initNews();
+          this.news = this.news.filter((item) => item.id !== id);
+          this.deleteDialog = false;
         } else {
           // Handle error here
+          this.blockedUI = false;
           this.showToast('error', 'Lỗi', 'Xóa bài viết thất bại')
+          this.deleteDialog = false;
         }
       },
       (error: any) => {
         // Handle error here
-        this.showToast('error', 'Lỗi', 'Xóa bài viết thất bại')
+        this.blockedUI = false;
+        this.showToast('error', 'Lỗi', 'Xóa bài viết thất bại');
+        this.deleteDialog = false;
       }
     );
 
@@ -163,5 +182,23 @@ export class AdminComponent {
   clear(table: Table) {
     table.clear();
     this.filter.nativeElement.value = '';
+  }
+
+  toggleDisplay(data: News) {
+    this.updateNews(data);
+  }
+
+  toggleHighlight(data: News) {
+    this.updateNews(data);
+  }
+
+  openDeleteDialog(data: News) {
+    this.deleteDialog = true;
+    this.selectedNews = data;
+  }
+
+  closeDeleteDialog() {
+    this.deleteDialog = false;
+    this.selectedNews = undefined;
   }
 }

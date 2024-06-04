@@ -8,6 +8,8 @@ import { News, NewsCreate, Category } from 'src/app/core/models';
 import { NewsService, FileUploadService } from 'src/app/core/service';
 import { FileUpload } from 'src/app/core/models';
 import { FileUpload as FileUploadPrime } from 'primeng/fileupload';
+import { DomSanitizer } from '@angular/platform-browser';
+import { cloneDeep } from 'lodash';
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
@@ -23,7 +25,7 @@ export class EditNewsDialogComponent {
   @Input() display: boolean;
   @Input() news: News;
   @Input() categories: Category[];
-  @Output() courseEmitter = new EventEmitter<string>();
+  @Output() newsEmitter = new EventEmitter<News>();
   @Output() displayChange = new EventEmitter<boolean>();
 
   // Biến validate form
@@ -35,6 +37,8 @@ export class EditNewsDialogComponent {
   visibleThumbnailDialog: boolean = false;
   newCategory: string = '';
   public blockedUI: boolean = false;
+  preview: boolean = false;
+  disableSubmitBtn: boolean;
 
   // Biến cục bộ cho NewCourseDialogComponent
   private subscriptions: Subscription[] = []
@@ -53,7 +57,8 @@ export class EditNewsDialogComponent {
     private config: PrimeNGConfig,
     private messageService: MessageService,
     private uploadService: FileUploadService,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -68,12 +73,12 @@ export class EditNewsDialogComponent {
 
   // INITIALIZATION ZONE
   initFormData() {
-    this.originalNews = this.news;
-    this.newNews = this.news;
+    this.originalNews = cloneDeep(this.news);
+    this.newNews = cloneDeep(this.news);;
     this.selectedCategory = this.news.category;
     this.imageUrl = this.newNews.image[0];
     this.originCategory = this.categories;
-    
+    this.disableSubmitBtn = true;
   }
 
   // BEHAVIOR LOGIC ZONE
@@ -91,29 +96,47 @@ export class EditNewsDialogComponent {
       name: this.newCategory,
       code: this.newCategory.toLowerCase().replace(/ /g, '-'),
     });
+    this.newNews.category.push({
+      name: this.newCategory,
+      code: this.newCategory.toLowerCase().replace(/ /g, '-'),
+    });
     this.newCategory = '';
   }
 
   // API LOGIC ZONE
   updateNews() {
     this.blockedUI = true;
-    this.subscriptions.push(
-      this.newsService.updateNews(this.newNews).subscribe(
-        (res) => {
+    const newsSub$ = this.newsService.updateNews(this.newNews).subscribe(
+      (res: any) => {
+        if (res && res.status === 200 && res.body) {
           this.showToast('success', 'Thành công', 'Cập nhật bài viết thành công');
           this.blockedUI = false;
-          this.displayChange.emit(false);
-        },
-        (error) => {
+          this.newsEmitter.emit(res.body);
+          this.closeDialog();
+        } else {
+          // Handle error here
           this.showToast('error', 'Lỗi', 'Cập nhật bài viết thất bại');
           this.blockedUI = false;
         }
-      )
-    )
+      },
+      (error: any) => {
+        // Handle error here
+        this.showToast('error', 'Lỗi', 'Cập nhật bài viết thất bại');
+        this.blockedUI = false;
+      }
+    );
+
+    this.subscriptions.push(newsSub$);
   }
 
   cancelSubmit() {
+    this.deleteImage(); // Kiểm tra nếu đã upload rồi thì xóa ảnh cũ
     this.closeDialog();
+  }
+
+  deleteImage() {
+    this.uploadService.deleteFile("/thegioianlac/news", this.currentFileUpload);
+    this.alreadyUpload = false;
   }
 
   closeDialog() {
@@ -122,22 +145,41 @@ export class EditNewsDialogComponent {
     this.resetForm();
   }
 
-  // Auto hiển thị semester gợi ý
-  // filterSemester(event: AutoCompleteCompleteEvent) {
-  //   let filtered: any[] = [];
-  //   let query = event.query;
-
-  //   for (let i = 0; i < (this.dropDownOptions as any[]).length; i++) {
-  //     let category = (this.dropDownOptions as any[])[i];
-  //     if (category.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-  //       filtered.push(category);
-  //     }
-  //   }
-  //   this.filteredCategory = filtered;
-  // }
-
   resetForm() {
-    this.newNews = this.originalNews;
+    this.newNews = cloneDeep(this.originalNews);
+    this.selectedCategory = this.originalNews.category;
+    this.deleteImage();
+    this.imageUrl = this.newNews.image[0];
+    this.disableSubmitBtn = true;
+  }
+
+  // Xử lý thay đổi value news && validate form
+  onDetailNewsChange(value: any, name: string) {
+    this.newNews = { ...this.newNews, [name]: value };
+    // Check field là content, title null thì set biến disableSubmitBtn = true
+    if (this.newNews.title === '' ||
+        this.newNews.category.length === 0 ||
+        this.newNews.subTitle === '' ||
+        this.newNews.detail === '' ||
+        JSON.stringify(this.newNews) === JSON.stringify(this.originalNews)) {
+        this.disableSubmitBtn = true;
+    } else {
+        this.disableSubmitBtn = false;
+    }
+}
+
+// Sanitize content: Chuyển content từ string sang HTML
+sanitizeContent(content: any): any {
+  return this.sanitizer.bypassSecurityTrustHtml(content);
+}
+
+  // Xử lý preview news
+  togglePreview() {
+    this.preview = !this.preview;
+  }
+
+  showDisableUpdateToast() {
+    this.showToast('error', 'Lỗi', 'Nội dung không thay đổi, hoặc chưa điền đủ thông tin để cập nhật bài viết');
   }
 
   //UPLOAD FILE LOGIC ZONE
@@ -148,8 +190,7 @@ export class EditNewsDialogComponent {
   selectFile(event: UploadEvent, fileUploader: FileUploadPrime): void {
     if (!event.files[0]) return;
     if (this.alreadyUpload) { // Kiểm tra nếu đã upload rồi thì xóa ảnh cũ
-      this.uploadService.deleteFile("/thegioianlac/news", this.currentFileUpload);
-      this.alreadyUpload = false;
+      this.deleteImage();
     }
     this.selectedFiles = event.files[0];
     this.upload(fileUploader);
@@ -174,6 +215,8 @@ export class EditNewsDialogComponent {
         if (response.downloadUrl !== '') {
           this.showToast('success', 'Upload ảnh thành công', 'Ảnh đã được lưu trữ');
           this.imageUrl = response.downloadUrl;
+          this.newNews.image[0] = response.downloadUrl;
+          this.disableSubmitBtn = false;
           this.alreadyUpload = true;
           this.visibleThumbnailDialog = false;
         } else {
