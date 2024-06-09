@@ -29,6 +29,7 @@ export class AdminComponent {
   public blockedUI: boolean = false;
   loading: boolean = true;
   displayDialog: boolean = false;
+  displayCreateDialog: boolean = false;
   deleteDialog: boolean = false;
   @ViewChild('filter') filter!: ElementRef;
 
@@ -120,6 +121,10 @@ export class AdminComponent {
     this.news[this.news.findIndex((item) => item.id === event.id)] = event;
   }
 
+  createNewsInCreateDialog(event: News) {
+    this.news.push(event);
+  }
+
   deleteNews(id: string) {
     this.blockedUI = true;
     const newsSub$ = this.newsService.deleteNews(id).subscribe(
@@ -165,6 +170,14 @@ export class AdminComponent {
 
   onHideDialog(display: boolean) {
     this.displayDialog = display;
+  }
+
+  displayCreateNewsDialog() {
+    this.displayCreateDialog = true;
+  }
+
+  onHideCreateDialog(display: boolean) {
+    this.displayCreateDialog = display;
   }
 
   closeCreateCourseModal(display: boolean) {

@@ -40,13 +40,10 @@ export class NewsComponent {
   }
 
   initHighLighNews() {
-    // this.blogService.getHighLighBlog().then((blogs) => {
-    //     this.blogs = blogs;
-    // });
     const newsSub$ = this.newsService.getAllNews().subscribe(
       (res: any) => {
         if (res && res.length > 0) {
-          this.news = res;
+          this.news = res.filter((news: News) => news.display === true);
           this.blockedUI = false;
         } else {
           // Handle error here

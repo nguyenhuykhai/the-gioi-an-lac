@@ -77,8 +77,8 @@ export class LandingComponent {
         const newsSub$ = this.newsService.getAllNews().subscribe(
             (res: any) => {
                 if (res && res.length > 0) {
-                    // Get three item to display on Landing Page
-                    this.news = res.slice(0, 3);
+                    // Get three item have hightlight and display on Landing Page
+                    this.news = res.filter((item: News) => item.highlight === true && item.display === true);
                     this.blockedUI = false;
                 } else {
                     // Handle error here

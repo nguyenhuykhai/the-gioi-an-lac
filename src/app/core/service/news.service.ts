@@ -22,7 +22,7 @@ export class NewsService {
 
     createNews(data: any) {
         return this.httpClient
-            .post<any>(`${environment.baseUrl}/news`, data)
+            .post<any>(`${environment.baseUrl}/news`, data, { observe: 'response' })
             .pipe(catchError(this.handleError));
     }
 
