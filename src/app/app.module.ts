@@ -2,18 +2,10 @@ import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AppLayoutModule } from './layout/app.layout.module';
-import { NotfoundComponent } from './demo/components/notfound/notfound.component';
-import { ProductService } from './demo/service/product.service';
-import { CountryService } from './demo/service/country.service';
-import { CustomerService } from './demo/service/customer.service';
-import { EventService } from './demo/service/event.service';
-import { IconService } from './demo/service/icon.service';
-import { NodeService } from './demo/service/node.service';
-import { PhotoService } from './demo/service/photo.service';
-import { BlogService, PriceService } from './demo/service';
+import { PhotoService } from './pages/service/photo.service';
+import { BlogService, PriceService } from './pages/service';
 import { DefaultLayoutModule } from './share/layout/default-layout/default-layout.module';
-import { DealerService } from './demo/service/dealer.service';
+import { DealerService } from './pages/service/dealer.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -34,10 +26,9 @@ export const firebaseConfig: FirebaseOptions = {
 };
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent],
+    declarations: [AppComponent],
     imports: [
         AppRoutingModule,
-        AppLayoutModule,
         DefaultLayoutModule,
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule,
@@ -46,8 +37,7 @@ export const firebaseConfig: FirebaseOptions = {
     ],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
-        CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService, BlogService, DealerService, PriceService,
+        PhotoService, BlogService, DealerService, PriceService,
         provideFirebaseApp(() => initializeApp(firebaseConfig)),
         provideStorage(() => getStorage())
     ],

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
-import { PhotoService } from 'src/app/demo/service/photo.service'
+import { PhotoService } from 'src/app/pages/service/photo.service'
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -22,7 +21,7 @@ export class HeaderAdminComponent {
 
   isHiddenMenuBarResponsive: boolean = true;
 
-  constructor(public layoutService: LayoutService, public router: Router, private photoService: PhotoService) { }
+  constructor(public router: Router, private photoService: PhotoService) { }
 
 
   ngOnInit() {
