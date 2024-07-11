@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Dealer } from '../../api/global';
+import { Dealer } from '../../model.ts/global';
 import { DealerService } from '../../service';
 import { DataView } from 'primeng/dataview';
 

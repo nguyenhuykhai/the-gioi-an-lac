@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PhotoService } from '../../service/photo.service';
 import { MenuItem } from 'primeng/api';
-import { Image } from '../../api/image';
+import { Image } from '../../model.ts/image';
 
 @Component({
     selector: 'app-services-page',

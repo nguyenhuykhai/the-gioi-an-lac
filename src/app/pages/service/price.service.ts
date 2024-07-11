@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Price } from '../api/global';
+import { Price } from '../model.ts/global';
 
 @Injectable()
 export class PriceService {

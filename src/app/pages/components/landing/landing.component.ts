@@ -8,7 +8,7 @@ import { NewsService } from 'src/app/core/service';
 
 // IMPORT INTERFACE
 import { News } from 'src/app/core/models';
-import { Blog } from 'src/app/pages/api/global';
+import { Blog } from 'src/app/pages/model.ts/global';
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Blog } from '../api/global';
+import { Blog } from '../model.ts/global';
 
 @Injectable()
 export class BlogService {

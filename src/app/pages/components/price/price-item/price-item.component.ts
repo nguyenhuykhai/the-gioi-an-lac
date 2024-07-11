@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Price } from 'src/app/pages/api/global';
+import { Price } from 'src/app/pages/model.ts/global';
 
 @Component({
   selector: 'app-price-item',

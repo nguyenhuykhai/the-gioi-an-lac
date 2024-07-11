@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Price } from '../../api/global';
+import { Price } from '../../model.ts/global';
 import { PriceService } from '../../service';
 import { Pipe, PipeTransform } from '@angular/core';
 
